@@ -13,8 +13,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 0 84% 50%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -22,65 +22,54 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 0 84% 50%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 0 84% 50%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Automatrix Brand Colors */
+    --automatrix-red: 0 84% 50%;
+    --automatrix-dark: 220 20% 8%;
+    --automatrix-darker: 220 25% 5%;
+    --automatrix-gray: 220 15% 15%;
+    --automatrix-light-gray: 220 10% 25%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 220 25% 5%;
+    --foreground: 0 0% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 20% 8%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 20% 8%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 0 84% 50%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 10% 60%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 0 84% 50%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 220 15% 20%;
+    --input: 220 15% 15%;
+    --ring: 0 84% 50%;
   }
 }
 
@@ -95,12 +84,11 @@
   }
 }
 
-/* Smooth scrolling */
+/* Apply dark class by default */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -118,9 +106,16 @@ html {
   background: hsl(var(--muted-foreground) / 0.5);
 }
 
-/* Gradient text utility */
+/* Automatrix Gradient text utility */
 .gradient-text {
-  background: linear-gradient(135deg, hsl(217 91% 60%), hsl(280 87% 65%));
+  background: linear-gradient(135deg, hsl(0 84% 55%), hsl(0 84% 45%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-subtle {
+  background: linear-gradient(135deg, hsl(0 0% 100%), hsl(0 0% 80%));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -145,10 +140,19 @@ html {
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px hsl(217 91% 60% / 0.3);
+    box-shadow: 0 0 20px hsl(0 84% 50% / 0.3);
   }
   50% {
-    box-shadow: 0 0 40px hsl(217 91% 60% / 0.6);
+    box-shadow: 0 0 40px hsl(0 84% 50% / 0.6);
+  }
+}
+
+@keyframes pulse-red {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
   }
 }
 
@@ -160,6 +164,10 @@ html {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
+.animate-pulse-red {
+  animation: pulse-red 2s ease-in-out infinite;
+}
+
 /* Gradient backgrounds */
 .bg-gradient-radial {
   background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
@@ -167,4 +175,25 @@ html {
 
 .bg-gradient-conic {
   background: conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops));
+}
+
+/* Automatrix specific styles */
+.automatrix-card {
+  background: linear-gradient(135deg, hsl(220 20% 10%), hsl(220 20% 8%));
+  border: 1px solid hsl(220 15% 20%);
+}
+
+.automatrix-card:hover {
+  border-color: hsl(0 84% 50% / 0.5);
+}
+
+.automatrix-button {
+  background: linear-gradient(135deg, hsl(0 84% 50%), hsl(0 84% 40%));
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.automatrix-button:hover {
+  background: linear-gradient(135deg, hsl(0 84% 55%), hsl(0 84% 45%));
+  box-shadow: 0 0 30px hsl(0 84% 50% / 0.4);
 }
