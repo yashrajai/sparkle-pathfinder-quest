@@ -1,13 +1,14 @@
 import React from 'react';
-import { Bot, AlertCircle } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { ClipboardList, Settings, Plug, Rocket } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
 import { useThemeStyles } from '../hooks/useThemeStyles';
 
 export default function ProblemStatement() {
-  const { theme, bgPrimary, bgSecondary, textPrimary, textSecondary, borderColor } = useThemeStyles();
+  const { theme, textPrimary, textSecondary } = useThemeStyles();
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const hasAnimated = useRef(false);
+  const isDark = theme === 'dark';
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting && !hasAnimated.current) { setIsVisible(true); hasAnimated.current = true; } }, { threshold: 0.2 });
@@ -15,52 +16,48 @@ export default function ProblemStatement() {
     return () => observer.disconnect();
   }, []);
 
+  const steps = [
+    { step: 'STEP 1', icon: ClipboardList, title: 'Requirements Analysis', description: 'We analyze your current invoice processing workflow, voice support needs, and integration requirements to design the perfect solution.' },
+    { step: 'STEP 2', icon: Settings, title: 'Custom Configuration', description: 'Our team configures AI systems to match your specific needs, including invoice templates, voice agent scripts, and integration parameters.' },
+    { step: 'STEP 3', icon: Plug, title: 'Integration & Testing', description: 'We seamlessly integrate our solutions with your existing systems like TallyPrime, conduct thorough testing, and ensure optimal performance.' },
+    { step: 'STEP 4', icon: Rocket, title: 'Training & Deployment', description: 'We provide comprehensive training for your team and ensure smooth deployment with ongoing support and optimization.' },
+  ];
+
   return (
-    <section ref={sectionRef} id="passion" className="relative py-32 px-6 overflow-hidden transition-colors duration-300" style={{ backgroundColor: bgPrimary }}>
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-      </div>
+    <section ref={sectionRef} id="workflow" className="relative py-24 px-6 overflow-hidden transition-colors duration-300" style={{ backgroundColor: isDark ? '#0c1215' : '#f8fafb' }}>
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-20">
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`} style={{ backgroundColor: bgSecondary, border: `1px solid ${borderColor}` }}>
-            <Bot className="w-4 h-4 text-red-500 animate-pulse" />
-            <span className="text-sm font-medium" style={{ color: textSecondary }}>Meet SARA - Our AI</span>
-          </div>
-          <h2 className={`text-4xl md:text-5xl font-bold mb-6 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ color: textPrimary }}>
-            What We Are Passionate About<br /><span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">Is Where We Can Help You</span>
-          </h2>
-          <p className={`text-xl max-w-3xl mx-auto leading-relaxed transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ color: textSecondary }}>
-            We are excited to introduce <strong className="text-red-500">SARA – Smart Assistance and Response AI</strong>, the revolutionary AI chatbot designed to enhance your experience with our software.
+        <div className="text-center mb-16">
+          <p className={`text-sm font-medium mb-4 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`} style={{ color: '#14b8a6' }}>
+            IMPLEMENTATION PROCESS
           </p>
+          <h2 className={`text-4xl md:text-5xl font-bold transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ color: textPrimary }}>
+            How We Transform Your Business
+          </h2>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-8 mt-16">
-          <div className={`relative overflow-hidden rounded-2xl transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
-            <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="AI Technology" className="w-full h-full object-cover rounded-2xl" />
-            <div className="absolute inset-0" style={{ background: theme === 'dark' ? 'linear-gradient(to top, rgb(10, 12, 16), rgba(10, 12, 16, 0.5), transparent)' : 'linear-gradient(to top, rgba(10, 12, 16, 0.9), rgba(10, 12, 16, 0.5), transparent)' }}></div>
-            <div className="absolute bottom-8 left-8 right-8">
-              <h3 className="text-2xl font-bold mb-2 text-white">Smart Assistance & Response AI</h3>
-              <p className="text-slate-200">SARA combines advanced text and voice capabilities to assist customers seamlessly</p>
-            </div>
-          </div>
-          
-          <div className={`p-12 rounded-2xl relative overflow-hidden group transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`} style={{ backgroundColor: bgSecondary, border: `1px solid ${borderColor}` }}>
-            <div className="relative z-10">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center mb-6">
-                <Bot className="w-8 h-8 text-white" />
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {steps.map((item, index) => (
+            <div 
+              key={index} 
+              className={`relative text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+              style={{ transitionDelay: `${200 + index * 100}ms` }}
+            >
+              {/* Connector Line */}
+              {index < steps.length - 1 && (
+                <div className="hidden lg:block absolute top-12 left-[60%] w-[80%] h-0.5" style={{ backgroundColor: 'rgba(20, 184, 166, 0.2)' }}>
+                  <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-2 h-2 rotate-45 border-t border-r" style={{ borderColor: 'rgba(20, 184, 166, 0.3)' }}></div>
+                </div>
+              )}
+              
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6" style={{ backgroundColor: 'rgba(20, 184, 166, 0.1)' }}>
+                <item.icon className="w-8 h-8" style={{ color: '#14b8a6' }} />
               </div>
-              <h3 className="text-2xl font-bold mb-4" style={{ color: textPrimary }}>What SARA Can Do</h3>
-              <ul className="space-y-3">
-                {['Select vehicles and generate leads', 'Create appointments effortlessly', 'Enable secure payment processing', 'Schedule promises to pay', 'Automate repetitive tasks'].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                    <span style={{ color: textSecondary }}>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              
+              <p className="text-xs font-semibold mb-2" style={{ color: '#14b8a6' }}>{item.step}</p>
+              <h3 className="text-lg font-bold mb-3" style={{ color: textPrimary }}>{item.title}</h3>
+              <p className="text-sm leading-relaxed" style={{ color: textSecondary }}>{item.description}</p>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
