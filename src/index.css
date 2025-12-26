@@ -4,72 +4,73 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 192 40% 6%;
+    --foreground: 0 0% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 192 35% 8%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 192 35% 8%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 0 84% 50%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 187 100% 42%;
+    --primary-foreground: 192 40% 6%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 192 30% 12%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 192 25% 15%;
+    --muted-foreground: 192 15% 55%;
 
-    --accent: 0 84% 50%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 187 100% 42%;
+    --accent-foreground: 192 40% 6%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 0 84% 50%;
+    --border: 192 30% 18%;
+    --input: 192 30% 12%;
+    --ring: 187 100% 42%;
 
     --radius: 0.5rem;
 
-    /* Automatrix Brand Colors */
-    --automatrix-red: 0 84% 50%;
-    --automatrix-dark: 220 20% 8%;
-    --automatrix-darker: 220 25% 5%;
-    --automatrix-gray: 220 15% 15%;
-    --automatrix-light-gray: 220 10% 25%;
+    /* AutoMatrix Brand Colors - Cyan/Teal Theme */
+    --automatrix-cyan: 187 100% 42%;
+    --automatrix-cyan-light: 187 100% 50%;
+    --automatrix-dark: 192 40% 6%;
+    --automatrix-darker: 192 45% 4%;
+    --automatrix-gray: 192 25% 12%;
+    --automatrix-light-gray: 192 20% 20%;
   }
 
   .dark {
-    --background: 220 25% 5%;
+    --background: 192 40% 6%;
     --foreground: 0 0% 98%;
 
-    --card: 220 20% 8%;
+    --card: 192 35% 8%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 220 20% 8%;
+    --popover: 192 35% 8%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 0 84% 50%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 187 100% 42%;
+    --primary-foreground: 192 40% 6%;
 
-    --secondary: 220 15% 15%;
+    --secondary: 192 30% 12%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 220 15% 15%;
-    --muted-foreground: 220 10% 60%;
+    --muted: 192 25% 15%;
+    --muted-foreground: 192 15% 55%;
 
-    --accent: 0 84% 50%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 187 100% 42%;
+    --accent-foreground: 192 40% 6%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 15% 20%;
-    --input: 220 15% 15%;
-    --ring: 0 84% 50%;
+    --border: 192 30% 18%;
+    --input: 192 30% 12%;
+    --ring: 187 100% 42%;
   }
 }
 
@@ -106,9 +107,9 @@ html {
   background: hsl(var(--muted-foreground) / 0.5);
 }
 
-/* Automatrix Gradient text utility */
+/* AutoMatrix Gradient text utility */
 .gradient-text {
-  background: linear-gradient(135deg, hsl(0 84% 55%), hsl(0 84% 45%));
+  background: linear-gradient(135deg, hsl(187 100% 50%), hsl(187 100% 35%));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -140,14 +141,14 @@ html {
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px hsl(0 84% 50% / 0.3);
+    box-shadow: 0 0 20px hsl(187 100% 42% / 0.3);
   }
   50% {
-    box-shadow: 0 0 40px hsl(0 84% 50% / 0.6);
+    box-shadow: 0 0 40px hsl(187 100% 42% / 0.6);
   }
 }
 
-@keyframes pulse-red {
+@keyframes pulse-cyan {
   0%, 100% {
     opacity: 0.5;
   }
@@ -164,8 +165,8 @@ html {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-.animate-pulse-red {
-  animation: pulse-red 2s ease-in-out infinite;
+.animate-pulse-cyan {
+  animation: pulse-cyan 2s ease-in-out infinite;
 }
 
 /* Gradient backgrounds */
@@ -177,23 +178,23 @@ html {
   background: conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops));
 }
 
-/* Automatrix specific styles */
+/* AutoMatrix specific styles */
 .automatrix-card {
-  background: linear-gradient(135deg, hsl(220 20% 10%), hsl(220 20% 8%));
-  border: 1px solid hsl(220 15% 20%);
+  background: linear-gradient(135deg, hsl(192 35% 10%), hsl(192 35% 8%));
+  border: 1px solid hsl(192 30% 18%);
 }
 
 .automatrix-card:hover {
-  border-color: hsl(0 84% 50% / 0.5);
+  border-color: hsl(187 100% 42% / 0.5);
 }
 
 .automatrix-button {
-  background: linear-gradient(135deg, hsl(0 84% 50%), hsl(0 84% 40%));
-  color: white;
+  background: linear-gradient(135deg, hsl(187 100% 42%), hsl(187 100% 35%));
+  color: hsl(192 40% 6%);
   transition: all 0.3s ease;
 }
 
 .automatrix-button:hover {
-  background: linear-gradient(135deg, hsl(0 84% 55%), hsl(0 84% 45%));
-  box-shadow: 0 0 30px hsl(0 84% 50% / 0.4);
+  background: linear-gradient(135deg, hsl(187 100% 50%), hsl(187 100% 42%));
+  box-shadow: 0 0 30px hsl(187 100% 42% / 0.4);
 }
