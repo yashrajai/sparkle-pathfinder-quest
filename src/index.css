@@ -4,73 +4,72 @@
 
 @layer base {
   :root {
-    --background: 160 30% 96%;
-    --foreground: 180 25% 15%;
+    --background: 180 20% 4%;
+    --foreground: 0 0% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 180 25% 15%;
+    --card: 180 25% 6%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 180 25% 15%;
+    --popover: 180 25% 6%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 168 80% 35%;
+    --primary: 175 70% 40%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 170 25% 92%;
-    --secondary-foreground: 180 25% 15%;
+    --secondary: 180 20% 10%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 170 20% 94%;
-    --muted-foreground: 180 10% 45%;
+    --muted: 180 15% 12%;
+    --muted-foreground: 175 20% 55%;
 
-    --accent: 168 80% 35%;
+    --accent: 175 70% 40%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 170 20% 88%;
-    --input: 170 20% 90%;
-    --ring: 168 80% 35%;
+    --border: 180 20% 15%;
+    --input: 180 20% 12%;
+    --ring: 175 70% 40%;
 
     --radius: 0.5rem;
 
-    /* AutoMatrix Brand Colors - Teal/Cyan Theme */
-    --automatrix-teal: 168 80% 35%;
-    --automatrix-teal-light: 168 70% 45%;
-    --automatrix-bg-light: 160 30% 96%;
-    --automatrix-bg-gradient-start: 180 40% 95%;
-    --automatrix-bg-gradient-end: 160 35% 92%;
-    --automatrix-text-dark: 180 25% 15%;
+    /* AutoMatrix Brand Colors - Dark with Teal/Cyan Glow */
+    --automatrix-teal: 175 70% 40%;
+    --automatrix-teal-light: 175 60% 50%;
+    --automatrix-teal-glow: 175 80% 35%;
+    --automatrix-bg-dark: 180 20% 4%;
+    --automatrix-bg-card: 180 25% 8%;
   }
 
   .dark {
-    --background: 180 30% 6%;
-    --foreground: 0 0% 98%;
+    --background: 180 20% 4%;
+    --foreground: 0 0% 95%;
 
-    --card: 180 25% 10%;
-    --card-foreground: 0 0% 98%;
+    --card: 180 25% 6%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 180 25% 10%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 180 25% 6%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 168 80% 40%;
-    --primary-foreground: 180 30% 6%;
+    --primary: 175 70% 40%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 180 25% 15%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 180 20% 10%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 180 20% 18%;
-    --muted-foreground: 170 15% 55%;
+    --muted: 180 15% 12%;
+    --muted-foreground: 175 20% 55%;
 
-    --accent: 168 80% 40%;
-    --accent-foreground: 180 30% 6%;
+    --accent: 175 70% 40%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 180 25% 20%;
-    --input: 180 25% 15%;
-    --ring: 168 80% 40%;
+    --border: 180 20% 15%;
+    --input: 180 20% 12%;
+    --ring: 175 70% 40%;
   }
 }
 
@@ -109,14 +108,14 @@ html {
 
 /* AutoMatrix Gradient text utility */
 .gradient-text {
-  background: linear-gradient(135deg, hsl(168 80% 35%), hsl(168 80% 25%));
+  background: linear-gradient(135deg, hsl(175 70% 40%), hsl(175 70% 30%));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-subtle {
-  background: linear-gradient(135deg, hsl(180 25% 15%), hsl(180 20% 30%));
+  background: linear-gradient(135deg, hsl(175 50% 60%), hsl(175 50% 45%));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -141,10 +140,10 @@ html {
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px hsl(168 80% 35% / 0.3);
+    box-shadow: 0 0 20px hsl(175 70% 40% / 0.3);
   }
   50% {
-    box-shadow: 0 0 40px hsl(168 80% 35% / 0.5);
+    box-shadow: 0 0 40px hsl(175 70% 40% / 0.5);
   }
 }
 
@@ -178,34 +177,37 @@ html {
   background: conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops));
 }
 
-/* AutoMatrix specific styles */
+/* AutoMatrix specific styles - Dark theme */
 .automatrix-card {
-  background: hsl(0 0% 100%);
-  border: 1px solid hsl(170 20% 88%);
-  box-shadow: 0 4px 20px hsl(180 30% 50% / 0.08);
+  background: hsl(180 25% 6%);
+  border: 1px solid hsl(175 70% 40% / 0.15);
+  box-shadow: 0 4px 20px hsl(175 70% 40% / 0.05);
 }
 
 .automatrix-card:hover {
-  border-color: hsl(168 80% 35% / 0.5);
-  box-shadow: 0 8px 30px hsl(168 80% 35% / 0.15);
+  border-color: hsl(175 70% 40% / 0.4);
+  box-shadow: 0 8px 30px hsl(175 70% 40% / 0.1);
 }
 
 .automatrix-button {
-  background: hsl(168 80% 35%);
+  background: hsl(175 70% 40%);
   color: white;
   transition: all 0.3s ease;
 }
 
 .automatrix-button:hover {
-  background: hsl(168 80% 30%);
-  box-shadow: 0 0 20px hsl(168 80% 35% / 0.3);
+  background: hsl(175 70% 45%);
+  box-shadow: 0 0 25px hsl(175 70% 40% / 0.4);
 }
 
-/* AutoMatrix gradient background */
+/* AutoMatrix gradient background - Dark with teal glow */
 .automatrix-gradient-bg {
-  background: linear-gradient(135deg, hsl(180 40% 95%) 0%, hsl(160 35% 92%) 50%, hsl(170 30% 94%) 100%);
+  background: radial-gradient(ellipse at 30% 20%, hsl(175 70% 15% / 0.3) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 80%, hsl(175 70% 12% / 0.2) 0%, transparent 50%),
+              hsl(180 20% 4%);
 }
 
 .automatrix-hero-gradient {
-  background: linear-gradient(180deg, hsl(170 35% 95%) 0%, hsl(180 40% 93%) 50%, hsl(160 30% 96%) 100%);
+  background: radial-gradient(ellipse at 50% 0%, hsl(175 70% 20% / 0.15) 0%, transparent 60%),
+              hsl(180 20% 4%);
 }
