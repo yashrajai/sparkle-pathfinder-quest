@@ -9,19 +9,18 @@ export function useThemeStyles() {
     theme,
     toggleTheme,
     isDark,
-    // AutoMatrix Agency Theme Colors - Teal/Cyan
-    bgPrimary: isDark ? '#0c1215' : '#f8fafb',
-    bgSecondary: isDark ? '#111a1f' : '#ffffff',
-    bgTertiary: isDark ? '#162026' : '#f1f5f7',
-    bgHero: isDark ? '#0c1215' : 'linear-gradient(135deg, #f0fdf9 0%, #e0f7f3 30%, #ccfbf1 60%, #f0fdf9 100%)',
-    textPrimary: isDark ? '#ffffff' : '#0c1215',
-    textSecondary: isDark ? '#7f9ba6' : '#4b6b78',
-    textTertiary: isDark ? '#5a7a87' : '#6b8a97',
-    borderColor: isDark ? 'rgba(20, 184, 166, 0.15)' : 'rgba(20, 184, 166, 0.2)',
-    borderColorHover: isDark ? 'rgba(20, 184, 166, 0.5)' : 'rgba(20, 184, 166, 0.5)',
-    // AutoMatrix Teal accent
-    accentColor: '#14b8a6',
-    accentColorLight: '#2dd4bf',
-    accentColorDark: '#0d9488',
+    // Automatrix Dark Theme Colors
+    bgPrimary: isDark ? '#0a0c10' : '#ffffff',
+    bgSecondary: isDark ? '#12151c' : '#f8fafc',
+    bgTertiary: isDark ? '#1a1f2a' : '#f1f5f9',
+    textPrimary: isDark ? '#ffffff' : '#0f172a',
+    textSecondary: isDark ? '#94a3b8' : '#64748b',
+    textTertiary: isDark ? '#64748b' : '#94a3b8',
+    borderColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
+    borderColorHover: isDark ? 'rgba(220, 38, 38, 0.5)' : 'rgba(220, 38, 38, 0.5)',
+    // Automatrix Red accent
+    accentColor: '#dc2626',
+    accentColorLight: '#ef4444',
+    accentColorDark: '#b91c1c',
   };
 }

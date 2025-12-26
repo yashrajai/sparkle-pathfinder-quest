@@ -4,12 +4,11 @@ import { useState, useEffect, useRef } from 'react';
 import { useThemeStyles } from '../hooks/useThemeStyles';
 
 export default function Testimonials() {
-  const { theme, textPrimary, textSecondary } = useThemeStyles();
+  const { bgPrimary, bgSecondary, textPrimary, textSecondary, borderColor } = useThemeStyles();
   const [isVisible, setIsVisible] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
   const hasAnimated = useRef(false);
-  const isDark = theme === 'dark';
 
   useEffect(() => { 
     const observer = new IntersectionObserver(([entry]) => { 
@@ -21,25 +20,22 @@ export default function Testimonials() {
 
   const testimonials = [
     {
-      quote: "The invoice automation system has transformed our accounting workflow. We've reduced processing time by 85% and virtually eliminated manual entry errors. The AI chatbot makes retrieving invoice data instantaneous.",
-      name: "Rajesh Patel",
-      title: "Finance Director",
-      company: "Global Manufacturing Ltd",
-      color: '#0D8ABC'
+      quote: "Running four dealerships means I need systems that scale. Automatrix has been the backbone of our growth at Florida Fine Cars. Every department—service, sales, accounting, and even collections—is connected in one intelligent system. It's more than just software; it's become a true competitive advantage for us.",
+      name: "Amir Azarpad",
+      title: "President and Founder",
+      company: "Florida Fine Cars"
     },
     {
-      quote: "Their AI voice agents have revolutionized our customer service. We now handle 3x more calls without increasing staff, and customer satisfaction has improved by 40%. The 24/7 availability is a game-changer.",
-      name: "Priya Sharma",
-      title: "Operations Head",
-      company: "TechServe Solutions",
-      color: '#6366F1'
+      quote: "AutoMatrix is very easy to use—CLICK, CLICK, DONE! The best part about AutoMatrix I would say for sure is going to be the reporting. You can see every single type of report possible. There are over 120 reports.",
+      name: "Benji Urra",
+      title: "President and Founder",
+      company: "Dealer Client"
     },
     {
-      quote: "The custom SaaS solution Automatrix developed for us perfectly integrates with our existing systems. The scalability and cloud architecture have helped us expand operations across multiple locations seamlessly.",
-      name: "Amit Kumar",
-      title: "CTO",
-      company: "Innovate Retail",
-      color: '#22C55E'
+      quote: "I've been using Automatrix since 2019, and it's been great to see how much the system has grown over the years. I love having all my data in one easy-to-use portal—it makes everything so much simpler to manage. Plus, it's awesome knowing I have a software partner who's always working on new features and improvements.",
+      name: "Hudson Biondo",
+      title: "President",
+      company: "Master Car"
     }
   ];
 
@@ -51,31 +47,31 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="testimonials" className="relative py-24 px-6" style={{ backgroundColor: isDark ? '#0c1215' : '#f8fafb' }}>
+    <section ref={sectionRef} className="relative py-32 px-6" style={{ backgroundColor: bgPrimary }}>
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className={`text-4xl md:text-5xl font-bold mb-4 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ color: textPrimary }}>
-            Trusted by <span style={{ color: '#14b8a6' }}>Industry Leaders</span>
+          <h2 className={`text-4xl md:text-5xl font-bold mb-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ color: textPrimary }}>
+            Testimonials<br /><span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">What Our Clients Say</span>
           </h2>
-          <p className={`text-lg transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ color: textSecondary }}>
-            See how Automatrix AI is transforming businesses across sectors
-          </p>
         </div>
         
-        <div className={`relative p-10 rounded-2xl overflow-hidden transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`} style={{ backgroundColor: isDark ? '#111a1f' : '#ffffff', border: `1px solid ${isDark ? 'rgba(20, 184, 166, 0.15)' : 'rgba(20, 184, 166, 0.2)'}` }}>
+        <div className={`relative p-12 rounded-2xl overflow-hidden transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`} style={{ backgroundColor: bgSecondary, border: `1px solid ${borderColor}` }}>
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-red-600"></div>
           <div className="relative z-10">
-            <p className="text-lg md:text-xl leading-relaxed mb-8 min-h-[100px]" style={{ color: textSecondary }}>
+            <Quote className="w-12 h-12 text-red-500/30 mb-6" />
+            <div className="flex gap-1 mb-6">
+              {[...Array(5)].map((_, i) => (<Star key={i} className="w-5 h-5 fill-red-500 text-red-500" />))}
+            </div>
+            <p className="text-xl md:text-2xl leading-relaxed mb-8 min-h-[120px]" style={{ color: textPrimary }}>
               {testimonials[activeTestimonial].quote}
             </p>
-            
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg" style={{ backgroundColor: testimonials[activeTestimonial].color }}>
+              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center text-white font-bold text-xl">
                 {testimonials[activeTestimonial].name.charAt(0)}
               </div>
               <div>
                 <div className="font-semibold" style={{ color: textPrimary }}>{testimonials[activeTestimonial].name}</div>
-                <div className="text-sm" style={{ color: textSecondary }}>{testimonials[activeTestimonial].title}</div>
-                <div className="text-sm" style={{ color: '#14b8a6' }}>{testimonials[activeTestimonial].company}</div>
+                <div className="text-sm" style={{ color: textSecondary }}>{testimonials[activeTestimonial].title}, {testimonials[activeTestimonial].company}</div>
               </div>
             </div>
           </div>
@@ -85,10 +81,24 @@ export default function Testimonials() {
               <button
                 key={i}
                 onClick={() => setActiveTestimonial(i)}
-                className={`h-2 rounded-full transition-all ${i === activeTestimonial ? 'w-8' : 'w-2'}`}
-                style={{ backgroundColor: i === activeTestimonial ? '#14b8a6' : isDark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)' }}
+                className={`w-3 h-3 rounded-full transition-all ${i === activeTestimonial ? 'bg-red-500 w-8' : 'bg-white/20 hover:bg-white/40'}`}
               />
             ))}
+          </div>
+        </div>
+        
+        <div className="mt-12 grid grid-cols-3 gap-8 text-center">
+          <div className={`transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="text-3xl font-bold text-red-500 mb-2">Since 2019</div>
+            <div className="text-sm" style={{ color: textSecondary }}>Trusted Platform</div>
+          </div>
+          <div className={`transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="text-3xl font-bold text-red-500 mb-2">120+</div>
+            <div className="text-sm" style={{ color: textSecondary }}>Report Types</div>
+          </div>
+          <div className={`transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="text-3xl font-bold text-red-500 mb-2">12</div>
+            <div className="text-sm" style={{ color: textSecondary }}>Integrated Modules</div>
           </div>
         </div>
       </div>
