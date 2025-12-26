@@ -45,8 +45,8 @@ const BentoCard = ({
     key={name}
     className={cn(
       "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-xl",
-      "bg-slate-900/50 backdrop-blur-sm border border-slate-800/50",
-      "transform-gpu transition-all duration-300 hover:border-violet-500/30",
+      "bg-[#12151c] backdrop-blur-sm border border-white/10",
+      "transform-gpu transition-all duration-300 hover:border-red-500/30",
       className
     )}
     {...props}
@@ -54,7 +54,7 @@ const BentoCard = ({
     <div>{background}</div>
     <div className="p-6">
       <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-2 transition-all duration-300 lg:group-hover:-translate-y-10">
-        <Icon className="h-12 w-12 origin-left transform-gpu text-violet-400 transition-all duration-300 ease-in-out group-hover:scale-75" />
+        <Icon className="h-12 w-12 origin-left transform-gpu text-red-500 transition-all duration-300 ease-in-out group-hover:scale-75" />
         <h3 className="text-xl font-semibold text-white">
           {name}
         </h3>
@@ -69,7 +69,7 @@ const BentoCard = ({
             )}
           >
             <button
-              className="pointer-events-auto p-0 text-violet-400 hover:text-violet-300 flex items-center gap-2 text-sm font-medium"
+              className="pointer-events-auto p-0 text-red-500 hover:text-red-400 flex items-center gap-2 text-sm font-medium"
             >
               <a href={href}>
                 {cta}
@@ -84,7 +84,7 @@ const BentoCard = ({
             )}
           >
             <button
-              className="pointer-events-auto p-0 text-violet-400 hover:text-violet-300 flex items-center gap-2 text-sm font-medium"
+              className="pointer-events-auto p-0 text-red-500 hover:text-red-400 flex items-center gap-2 text-sm font-medium"
             >
               <a href={href}>
                 {cta}
@@ -96,7 +96,7 @@ const BentoCard = ({
       )}
     </div>
 
-    <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-violet-500/5" />
+    <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-red-500/5" />
   </div>
 );
 
