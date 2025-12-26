@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Moon, Sun, Menu, X, Home, Settings, Workflow, Gift, MessageSquare, Phone, Mic } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import LaserFlow from './LaserFlow';
 
 export default function Hero() {
   const { theme, toggleTheme } = useTheme();
@@ -24,11 +25,31 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen overflow-hidden transition-colors duration-300" style={{ background: isDark ? '#0c1215' : 'linear-gradient(135deg, #f0fdf9 0%, #e0f7f3 30%, #ccfbf1 60%, #f0fdf9 100%)' }}>
+      {/* Laser Flow Background */}
+      <div className="absolute inset-0" style={{ pointerEvents: 'none', zIndex: 1 }}>
+        <LaserFlow 
+          color={isDark ? '#14b8a6' : '#0d9488'} 
+          wispDensity={3.5} 
+          fogIntensity={1.2} 
+          fogScale={0.4} 
+          flowSpeed={0.6} 
+          wispSpeed={20} 
+          wispIntensity={isDark ? 12 : 6} 
+          horizontalBeamOffset={0.08} 
+          verticalBeamOffset={0} 
+          verticalSizing={2.5} 
+          horizontalSizing={0.5} 
+          decay={0.8} 
+          falloffStart={0.7} 
+          mouseTiltStrength={0.015} 
+        />
+      </div>
+
       {/* Navigation */}
       <nav className="relative z-50 w-full py-4 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-center">
-            <div className="flex items-center gap-2 px-6 py-3 rounded-full" style={{ backgroundColor: isDark ? '#111a1f' : '#ffffff', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
+            <div className="flex items-center gap-2 px-6 py-3 rounded-full" style={{ backgroundColor: isDark ? 'rgba(17, 26, 31, 0.9)' : 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(12px)', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}>
               {/* Logo */}
               <div className="flex items-center gap-2 pr-6 border-r" style={{ borderColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }}>
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #14b8a6, #0d9488)' }}>
@@ -60,11 +81,11 @@ export default function Hero() {
       </nav>
 
       {/* Hero Content */}
-      <div className="max-w-7xl mx-auto px-6 pt-16 pb-24">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16 pb-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style={{ backgroundColor: isDark ? 'rgba(20, 184, 166, 0.1)' : 'rgba(20, 184, 166, 0.1)', border: '1px solid rgba(20, 184, 166, 0.2)' }}>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style={{ backgroundColor: isDark ? 'rgba(20, 184, 166, 0.1)' : 'rgba(20, 184, 166, 0.15)', border: '1px solid rgba(20, 184, 166, 0.3)', backdropFilter: 'blur(8px)' }}>
               <span className="text-sm font-medium" style={{ color: '#14b8a6' }}>AI-Powered Solutions</span>
             </div>
             
@@ -81,7 +102,7 @@ export default function Hero() {
               <a href="#contact" className="px-8 py-3 rounded-full font-medium text-white transition-all hover:shadow-lg hover:shadow-teal-500/30" style={{ backgroundColor: '#0c1215' }}>
                 Get Started
               </a>
-              <a href="#services" className="px-8 py-3 rounded-full font-medium transition-all" style={{ backgroundColor: 'transparent', border: '1px solid rgba(0,0,0,0.2)', color: isDark ? '#ffffff' : '#0c1215' }}>
+              <a href="#services" className="px-8 py-3 rounded-full font-medium transition-all backdrop-blur-sm" style={{ backgroundColor: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.8)', border: `1px solid ${isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'}`, color: isDark ? '#ffffff' : '#0c1215' }}>
                 Learn More
               </a>
             </div>
@@ -101,21 +122,20 @@ export default function Hero() {
           <div className="relative flex justify-center items-center">
             <div className="relative w-72 h-72 lg:w-96 lg:h-96">
               {/* Outer glow */}
-              <div className="absolute inset-0 rounded-full opacity-20" style={{ background: 'radial-gradient(circle, #14b8a6 0%, transparent 70%)' }}></div>
+              <div className="absolute inset-0 rounded-full opacity-30 animate-pulse" style={{ background: 'radial-gradient(circle, #14b8a6 0%, transparent 70%)' }}></div>
               
               {/* Main bot circle */}
-              <div className="absolute inset-8 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(180deg, #1f3a40 0%, #0c1215 100%)', boxShadow: '0 20px 60px rgba(20, 184, 166, 0.2)' }}>
+              <div className="absolute inset-8 rounded-full flex flex-col items-center justify-center" style={{ background: 'linear-gradient(180deg, #1f3a40 0%, #0c1215 100%)', boxShadow: '0 20px 60px rgba(20, 184, 166, 0.3)' }}>
                 {/* Eyes */}
-                <div className="flex gap-8 mb-8">
-                  <div className="w-3 h-10 rounded-full bg-teal-400/50"></div>
-                  <div className="w-3 h-10 rounded-full bg-teal-400/50"></div>
+                <div className="flex gap-8 mb-4">
+                  <div className="w-3 h-10 rounded-full bg-teal-400/60"></div>
+                  <div className="w-3 h-10 rounded-full bg-teal-400/60"></div>
                 </div>
-              </div>
-              
-              {/* Microphone indicator */}
-              <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(20, 184, 166, 0.2)' }}>
-                  <Mic className="w-5 h-5 text-teal-400" />
+                {/* Microphone indicator */}
+                <div className="mt-4">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(20, 184, 166, 0.2)' }}>
+                    <Mic className="w-5 h-5 text-teal-400" />
+                  </div>
                 </div>
               </div>
             </div>
