@@ -68,7 +68,7 @@ export default function Hero() {
         <div className="relative w-[92%] max-w-[1300px] rounded-3xl overflow-hidden -mb-16 transition-all duration-300" style={{ zIndex: 10, height: '58vh', minHeight: '480px', maxHeight: '620px', background: 'rgba(8, 15, 18, 0.85)', border: '1px solid rgba(40, 60, 65, 0.4)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.03)', backdropFilter: 'blur(20px)' }}>
           {/* Spline 3D Animation - Positioned to the right */}
           <div className="absolute inset-0 z-0 flex justify-end">
-            <div className="w-[70%] h-full relative" style={{ marginRight: '-5%' }}>
+            <div className="w-[70%] h-full relative" style={{ marginRight: '-15%' }}>
               <Suspense fallback={<div className="w-full h-full bg-transparent" />}>
                 <Spline scene="https://prod.spline.design/IDmOZGWSvcrYbJ2O/scene.splinecode" />
               </Suspense>
