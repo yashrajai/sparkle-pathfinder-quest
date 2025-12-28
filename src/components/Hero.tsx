@@ -53,6 +53,8 @@ export default function Hero() {
           horizontalBeamOffset={0.15}
           verticalBeamOffset={0.0}
           flowSpeed={0.8}
+          fogIntensity={0.3}
+          decay={0.9}
         />
       </div>
       {/* Additional ambient glow overlays */}
