@@ -78,11 +78,19 @@ export default function Hero() {
           
           {/* Hero Text - Left side */}
           <div className="absolute left-12 top-1/2 -translate-y-1/2 z-10 max-w-lg">
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+            <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-8">
               <span className="text-white">Automate Smarter.</span>
               <br />
               <span className="bg-gradient-to-r from-teal-300 via-cyan-400 to-teal-500 bg-clip-text text-transparent">Scale Faster</span>
             </h1>
+            <div className="flex gap-4">
+              <a href="#demo" className="px-6 py-3 bg-white text-gray-900 rounded-full font-medium hover:bg-gray-100 transition-colors">
+                Get Started
+              </a>
+              <a href="#solutions" className="px-6 py-3 bg-transparent border border-white/30 text-white rounded-full font-medium hover:bg-white/10 transition-colors">
+                Learn More
+              </a>
+            </div>
           </div>
         </div>
       </div>
