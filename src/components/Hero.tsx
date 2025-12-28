@@ -64,8 +64,8 @@ export default function Hero() {
 
       {/* Hero Content */}
       <div className="flex-1 flex items-end justify-center">
-        <div className="relative w-[92%] max-w-[1300px] rounded-3xl overflow-hidden -mb-16 transition-all duration-300" style={{ zIndex: 10, height: '58vh', minHeight: '480px', maxHeight: '620px', background: 'rgba(5, 10, 12, 0.7)', border: '1px solid rgba(20, 150, 140, 0.2)', boxShadow: '0 0 80px rgba(20, 150, 140, 0.1)', backdropFilter: 'blur(16px)' }}>
-          <div className="absolute inset-0 bg-gradient-to-b from-teal-500/5 via-transparent to-transparent"></div>
+        <div className="relative w-[92%] max-w-[1300px] rounded-3xl overflow-hidden -mb-16 transition-all duration-300" style={{ zIndex: 10, height: '58vh', minHeight: '480px', maxHeight: '620px', background: 'rgba(8, 15, 18, 0.85)', border: '1px solid rgba(40, 60, 65, 0.4)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.03)', backdropFilter: 'blur(20px)' }}>
+          <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] via-transparent to-transparent"></div>
           <div className="relative h-full flex items-center justify-center px-10">
             <div className="text-center max-w-4xl">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] text-white">
