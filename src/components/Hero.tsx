@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import LaserFlow from './LaserFlow';
 import { FlipWords } from './ui/flip-words';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { useState } from 'react';
 import automatrixLogo from '@/assets/automatrix-logo.jpg';
+import Spline from '@splinetool/react-spline';
 
 export default function Hero() {
   const { theme, toggleTheme } = useTheme();
@@ -65,8 +66,14 @@ export default function Hero() {
       {/* Hero Content */}
       <div className="flex-1 flex items-end justify-center">
         <div className="relative w-[92%] max-w-[1300px] rounded-3xl overflow-hidden -mb-16 transition-all duration-300" style={{ zIndex: 10, height: '58vh', minHeight: '480px', maxHeight: '620px', background: 'rgba(8, 15, 18, 0.85)', border: '1px solid rgba(40, 60, 65, 0.4)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.03)', backdropFilter: 'blur(20px)' }}>
-          <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] via-transparent to-transparent"></div>
-          <div className="relative h-full flex items-center justify-center px-10">
+          {/* Spline 3D Animation Background */}
+          <div className="absolute inset-0 z-0">
+            <Suspense fallback={<div className="w-full h-full bg-transparent" />}>
+              <Spline scene="https://prod.spline.design/IDmOZGWSvcrYbJ2O/scene.splinecode" />
+            </Suspense>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] via-transparent to-transparent z-[1]"></div>
+          <div className="relative h-full flex items-center justify-center px-10 z-[2]">
             <div className="text-center max-w-4xl">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] text-white">
                 A Comprehensive Platform<br />
