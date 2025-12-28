@@ -78,6 +78,9 @@ export default function Hero() {
           
           {/* Hero Text - Left side */}
           <div className="absolute left-12 top-1/2 -translate-y-1/2 z-10 max-w-lg">
+            <span className="inline-block px-4 py-2 mb-6 text-sm font-medium text-teal-400 border border-teal-400/30 rounded-full bg-teal-400/5">
+              AI-Powered Solutions
+            </span>
             <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-8">
               <span className="text-white">Automate Smarter.</span>
               <br />
