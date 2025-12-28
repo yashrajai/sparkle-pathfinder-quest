@@ -19,9 +19,8 @@ export default function Hero() {
           {/* Logo */}
           <div className="flex items-center gap-3">
             <img src={automatrixLogo} alt="Automatrix Logo" className="w-12 h-12 object-contain" />
-            <span className="text-xl font-bold">
-              <span className="bg-gradient-to-r from-teal-300 via-cyan-400 to-teal-500 bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_auto]">Auto</span>
-              <span className="text-white">Matrix</span>
+            <span className="text-xl font-bold bg-gradient-to-r from-teal-300 via-cyan-400 to-teal-500 bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_auto]">
+              AutoMatrix
             </span>
           </div>
           
