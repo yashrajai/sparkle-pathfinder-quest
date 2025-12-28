@@ -19,7 +19,7 @@ export default function Hero() {
           {/* Logo */}
           <div className="flex items-center gap-3">
             <img src={automatrixLogo} alt="Automatrix Logo" className="w-12 h-12 object-contain" />
-            <span className="text-xl font-bold text-white">AUTOMATRIX</span>
+            <span className="text-xl font-bold"><span className="text-teal-400">Auto</span><span className="text-white">Matrix</span></span>
           </div>
           
           {/* Desktop Nav */}
