@@ -49,7 +49,7 @@ export default function Hero() {
       {/* Background Effect - Deep teal ambient glow on pure black */}
       <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 1 }}>
         <LaserFlow 
-          color="#0d7a7a"
+          color="#064d4d"
           horizontalBeamOffset={0.15}
           verticalBeamOffset={0.0}
           flowSpeed={0.8}
