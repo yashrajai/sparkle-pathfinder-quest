@@ -11,7 +11,7 @@ export default function Hero() {
   const rotatingTexts = ['Driven by Intelligence', 'Powered by AI', 'Built for Dealers', 'Designed to Scale'];
 
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden transition-colors duration-300" style={{ backgroundColor: '#050a0c' }}>
+    <section className="relative min-h-screen flex flex-col overflow-hidden transition-colors duration-300" style={{ backgroundColor: '#000000' }}>
       {/* Navigation */}
       <nav className="relative z-50 w-full py-6 px-6">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
@@ -46,9 +46,30 @@ export default function Hero() {
         </div>
       </nav>
 
-      {/* Background Effect - Deep teal glow on black */}
+      {/* Background Effect - Deep teal ambient glow on pure black */}
       <div className="absolute inset-0" style={{ pointerEvents: 'none', zIndex: 1 }}>
-        <LaserFlow color="#0d6d6d" wispDensity={4} fogIntensity={1.8} fogScale={0.5} flowSpeed={0.4} wispSpeed={15} wispIntensity={18} horizontalBeamOffset={0.1} verticalBeamOffset={0} verticalSizing={3} horizontalSizing={0.6} decay={0.6} falloffStart={0.5} mouseTiltStrength={0.01} />
+        <LaserFlow 
+          color="#0a5555" 
+          wispDensity={2} 
+          fogIntensity={2.5} 
+          fogScale={0.3} 
+          flowSpeed={0.2} 
+          wispSpeed={8} 
+          wispIntensity={12} 
+          horizontalBeamOffset={0} 
+          verticalBeamOffset={0} 
+          verticalSizing={2} 
+          horizontalSizing={0.4} 
+          decay={0.8} 
+          falloffStart={0.3} 
+          mouseTiltStrength={0.005} 
+        />
+      </div>
+      {/* Additional ambient glow overlays */}
+      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }}>
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full opacity-20" style={{ background: 'radial-gradient(circle, rgba(13, 109, 109, 0.4) 0%, transparent 70%)', filter: 'blur(80px)' }}></div>
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full opacity-15" style={{ background: 'radial-gradient(circle, rgba(10, 85, 85, 0.5) 0%, transparent 70%)', filter: 'blur(100px)' }}></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full opacity-10" style={{ background: 'radial-gradient(ellipse, rgba(13, 109, 109, 0.3) 0%, transparent 60%)', filter: 'blur(60px)' }}></div>
       </div>
 
       {/* Hero Content */}
