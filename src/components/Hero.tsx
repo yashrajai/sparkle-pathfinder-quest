@@ -75,6 +75,15 @@ export default function Hero() {
             </div>
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] via-transparent to-transparent z-[1]"></div>
+          
+          {/* Hero Text - Left side */}
+          <div className="absolute left-12 top-1/2 -translate-y-1/2 z-10 max-w-lg">
+            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+              <span className="text-white">Automate Smarter.</span>
+              <br />
+              <span className="bg-gradient-to-r from-teal-300 via-cyan-400 to-teal-500 bg-clip-text text-transparent">Scale Faster</span>
+            </h1>
+          </div>
         </div>
       </div>
     </section>
