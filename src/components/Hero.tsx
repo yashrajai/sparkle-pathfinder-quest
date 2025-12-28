@@ -66,31 +66,15 @@ export default function Hero() {
       {/* Hero Content */}
       <div className="flex-1 flex items-end justify-center">
         <div className="relative w-[92%] max-w-[1300px] rounded-3xl overflow-hidden -mb-16 transition-all duration-300" style={{ zIndex: 10, height: '58vh', minHeight: '480px', maxHeight: '620px', background: 'rgba(8, 15, 18, 0.85)', border: '1px solid rgba(40, 60, 65, 0.4)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.03)', backdropFilter: 'blur(20px)' }}>
-          {/* Spline 3D Animation Background */}
-          <div className="absolute inset-0 z-0">
-            <Suspense fallback={<div className="w-full h-full bg-transparent" />}>
-              <Spline scene="https://prod.spline.design/IDmOZGWSvcrYbJ2O/scene.splinecode" />
-            </Suspense>
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] via-transparent to-transparent z-[1]"></div>
-          <div className="relative h-full flex items-center justify-center px-10 z-[2]">
-            <div className="text-center max-w-4xl">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] text-white">
-                A Comprehensive Platform<br />
-                <FlipWords words={rotatingTexts} duration={3000} className="bg-gradient-to-r from-teal-400 via-teal-500 to-teal-400 bg-clip-text text-transparent" />
-              </h1>
-              <p className="text-lg md:text-xl mb-4 text-teal-400">
-                we truly think of everything
-              </p>
-              <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed text-gray-400">
-                Transform your automotive retail operations with an enterprise-grade AI-driven ERP solution
-              </p>
-              <div className="flex flex-col sm:flex-row gap-5 justify-center">
-                <a href="#demo" className="px-9 py-3.5 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 text-white font-semibold rounded-lg transition-all shadow-lg shadow-teal-500/30 hover:shadow-teal-400/40">Request Demo</a>
-                <a href="#solutions" className="px-9 py-3.5 backdrop-blur-sm font-semibold rounded-lg transition-all bg-white/5 border border-white/10 text-white hover:border-teal-500/50">Explore Solutions</a>
-              </div>
+          {/* Spline 3D Animation - Positioned to the right */}
+          <div className="absolute inset-0 z-0 flex justify-end">
+            <div className="w-[70%] h-full relative" style={{ marginRight: '-5%' }}>
+              <Suspense fallback={<div className="w-full h-full bg-transparent" />}>
+                <Spline scene="https://prod.spline.design/IDmOZGWSvcrYbJ2O/scene.splinecode" />
+              </Suspense>
             </div>
           </div>
+          <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] via-transparent to-transparent z-[1]"></div>
         </div>
       </div>
     </section>
