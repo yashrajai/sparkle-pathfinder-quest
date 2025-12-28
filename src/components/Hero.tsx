@@ -52,6 +52,7 @@ export default function Hero() {
           color="#0d7a7a"
           horizontalBeamOffset={0.15}
           verticalBeamOffset={0.0}
+          flowSpeed={0.8}
         />
       </div>
       {/* Additional ambient glow overlays */}
