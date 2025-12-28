@@ -77,7 +77,7 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] via-transparent to-transparent z-[1]"></div>
           
           {/* Hero Text - Left side */}
-          <div className="absolute left-12 top-1/2 -translate-y-1/2 z-10 max-w-lg">
+          <div className="absolute left-24 top-1/2 -translate-y-1/2 z-10 max-w-lg">
             <span className="inline-block px-4 py-2 mb-6 text-sm font-medium text-teal-400 border border-teal-400/30 rounded-full bg-teal-400/5">
               AI-Powered Solutions
             </span>
