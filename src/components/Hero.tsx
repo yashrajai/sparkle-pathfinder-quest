@@ -46,23 +46,12 @@ export default function Hero() {
         </div>
       </nav>
 
-      {/* Background Effect - Deep teal ambient glow on pure black, shifted right */}
-      <div className="absolute inset-0" style={{ pointerEvents: 'none', zIndex: 1, transform: 'translateX(15%)' }}>
+      {/* Background Effect - Deep teal ambient glow on pure black */}
+      <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 1 }}>
         <LaserFlow 
-          color="#0d7a7a" 
-          wispDensity={3} 
-          fogIntensity={1.8} 
-          fogScale={0.4} 
-          flowSpeed={0.3} 
-          wispSpeed={12} 
-          wispIntensity={15} 
-          horizontalBeamOffset={0.2} 
-          verticalBeamOffset={-0.1} 
-          verticalSizing={2.5} 
-          horizontalSizing={0.5} 
-          decay={0.65} 
-          falloffStart={0.4} 
-          mouseTiltStrength={0.008} 
+          color="#0d7a7a"
+          horizontalBeamOffset={0.15}
+          verticalBeamOffset={0.0}
         />
       </div>
       {/* Additional ambient glow overlays */}
