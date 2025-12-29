@@ -67,70 +67,55 @@ export default function Hero() {
       <div className="flex-1 flex items-end justify-center">
         <div className="relative w-[92%] max-w-[1300px] rounded-3xl overflow-hidden -mb-16 transition-all duration-300" style={{ zIndex: 10, height: '58vh', minHeight: '480px', maxHeight: '620px', background: 'rgba(8, 15, 18, 0.85)', border: '1px solid rgba(40, 60, 65, 0.4)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.03)', backdropFilter: 'blur(20px)' }}>
           {/* Robot with Connected Nodes */}
-          <div className="absolute right-0 top-0 bottom-0 w-[65%] z-0">
-            {/* SVG Connection Lines - Fixed position connecting to robot center */}
-            <svg className="absolute inset-0 w-full h-full z-10 pointer-events-none" style={{ overflow: 'visible' }}>
-              <defs>
-                <linearGradient id="tealGradientLeft" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#14b8a6" />
-                  <stop offset="50%" stopColor="#06b6d4" />
-                  <stop offset="100%" stopColor="#14b8a6" />
-                </linearGradient>
-                <linearGradient id="tealGradientRight" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#14b8a6" />
-                  <stop offset="50%" stopColor="#06b6d4" />
-                  <stop offset="100%" stopColor="#14b8a6" />
-                </linearGradient>
-                <filter id="glow">
-                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                  <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-              </defs>
-              
-              {/* Left connection line - from AutoMatrix AI to robot */}
-              <path
-                d="M 80 140 Q 140 140 180 180 Q 220 220 280 240"
-                stroke="url(#tealGradientLeft)"
-                strokeWidth="2"
-                fill="none"
-                filter="url(#glow)"
-                className="animate-pulse"
-              />
-              {/* Small dot at the end of left line */}
-              <circle cx="280" cy="240" r="4" fill="#14b8a6" filter="url(#glow)" className="animate-pulse" />
-              
-              {/* Right connection line - from robot to Click Me */}
-              <path
-                d="M 340 200 Q 400 160 460 120 Q 500 90 540 80"
-                stroke="url(#tealGradientRight)"
-                strokeWidth="2"
-                fill="none"
-                filter="url(#glow)"
-                className="animate-pulse"
-              />
-              {/* Small dot at the start of right line */}
-              <circle cx="340" cy="200" r="4" fill="#14b8a6" filter="url(#glow)" className="animate-pulse" />
-            </svg>
-
+          <div className="absolute right-0 top-0 bottom-0 w-[60%] z-0 flex items-center justify-center">
             {/* Left Node - AutoMatrix AI */}
-            <div className="absolute left-[2%] top-[25%] z-20">
-              <div className="px-4 py-2.5 rounded-lg bg-[#0a1a1a]/95 border border-teal-500/50 text-white text-sm font-medium backdrop-blur-sm shadow-lg shadow-teal-500/20">
+            <div className="absolute left-[5%] top-[30%] z-20">
+              <div className="px-4 py-2 rounded-lg bg-[#0a1a1a]/90 border border-teal-500/40 text-white text-sm font-medium backdrop-blur-sm shadow-lg shadow-teal-500/10">
                 AutoMatrix AI
               </div>
+              {/* Connection line from left node to robot */}
+              <svg className="absolute top-1/2 left-full w-[120px] h-[60px] overflow-visible" style={{ transform: 'translateY(-50%)' }}>
+                <path
+                  d="M 0 0 Q 60 0 80 30 T 120 60"
+                  stroke="url(#tealGradient)"
+                  strokeWidth="2"
+                  fill="none"
+                  className="animate-pulse"
+                />
+                <defs>
+                  <linearGradient id="tealGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#14b8a6" />
+                    <stop offset="100%" stopColor="#06b6d4" />
+                  </linearGradient>
+                </defs>
+              </svg>
             </div>
 
             {/* Right Node - Click Me */}
-            <div className="absolute right-[8%] top-[12%] z-20">
-              <div className="px-5 py-2.5 rounded-lg bg-teal-500 text-white text-sm font-medium shadow-lg shadow-teal-500/40 cursor-pointer hover:bg-teal-400 transition-colors">
+            <div className="absolute right-[15%] top-[20%] z-20">
+              {/* Connection line from robot to right node */}
+              <svg className="absolute top-1/2 right-full w-[100px] h-[40px] overflow-visible" style={{ transform: 'translateY(-50%)' }}>
+                <path
+                  d="M 100 20 Q 50 20 30 0 T 0 0"
+                  stroke="url(#tealGradient2)"
+                  strokeWidth="2"
+                  fill="none"
+                  className="animate-pulse"
+                />
+                <defs>
+                  <linearGradient id="tealGradient2" x1="100%" y1="0%" x2="0%" y2="0%">
+                    <stop offset="0%" stopColor="#14b8a6" />
+                    <stop offset="100%" stopColor="#06b6d4" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div className="px-4 py-2 rounded-lg bg-teal-500 text-white text-sm font-medium shadow-lg shadow-teal-500/30 cursor-pointer hover:bg-teal-400 transition-colors">
                 Click Me
               </div>
             </div>
 
             {/* Spline 3D Robot - Centered */}
-            <div className="absolute inset-0 z-0" style={{ marginRight: '-5%' }}>
+            <div className="w-full h-full relative" style={{ marginRight: '-10%' }}>
               <Suspense fallback={<div className="w-full h-full bg-transparent" />}>
                 <Spline scene="https://prod.spline.design/IDmOZGWSvcrYbJ2O/scene.splinecode" />
               </Suspense>
