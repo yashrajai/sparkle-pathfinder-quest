@@ -6,7 +6,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useState } from 'react';
 import automatrixLogo from '@/assets/automatrix-logo-new.png';
 import Spline from '@splinetool/react-spline';
-
+import { GlowButton } from './ui/glow-button';
 export default function Hero() {
   const { theme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -30,7 +30,7 @@ export default function Hero() {
             <a href="#solutions" className="text-gray-400 transition-colors hover:text-teal-400">Solutions</a>
             <a href="#process" className="text-gray-400 transition-colors hover:text-teal-400">Process</a>
             <a href="#about" className="text-gray-400 transition-colors hover:text-teal-400">About</a>
-            <a href="#book-call" className="px-5 py-2 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 rounded-lg font-medium transition-all text-white shadow-lg shadow-teal-500/20">Book a Call</a>
+            <GlowButton href="#book-call">Book a Call</GlowButton>
           </div>
 
           {/* Mobile Menu Button */}

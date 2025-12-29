@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Zap, Users, Utensils, Check, Sparkles } from 'lucide-react';
-
+import { GlowButton } from './ui/glow-button';
 export default function Solutions() {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -134,15 +134,10 @@ export default function Solutions() {
                   ))}
                 </ul>
                 
-                {/* CTA Button */}
-                <a 
-                  href="#book-call" 
-                  className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r ${solution.gradient} rounded-xl font-semibold text-white transition-all duration-300 hover:shadow-lg group-hover:translate-x-1`}
-                  style={{ boxShadow: `0 4px 20px ${solution.glowColor}` }}
-                >
+                <GlowButton href="#book-call">
                   <span>Book a Call</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </a>
+                  <ArrowRight className="w-4 h-4" />
+                </GlowButton>
               </div>
             </div>
           ))}
@@ -153,13 +148,10 @@ export default function Solutions() {
           <div className="inline-flex flex-col items-center p-8 rounded-3xl" style={{ background: 'rgba(8, 15, 18, 0.6)', border: '1px solid rgba(40, 60, 65, 0.4)' }}>
             <h3 className="text-2xl font-bold text-white mb-2">Ready to Transform Your Business?</h3>
             <p className="text-gray-400 mb-6">Join Fortune 500 companies already using AutoMatrix</p>
-            <a 
-              href="#book-call" 
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white font-bold rounded-xl transition-all shadow-lg shadow-teal-500/30 group"
-            >
+            <GlowButton href="#book-call">
               <span>Schedule Your Strategy Call</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
+              <ArrowRight className="w-5 h-5" />
+            </GlowButton>
           </div>
         </div>
       </div>

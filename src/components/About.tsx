@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Award, Globe, Users, Zap, Target, Shield, TrendingUp } from 'lucide-react';
+import { GlowButton } from './ui/glow-button';
 
 export default function About() {
   const [isVisible, setIsVisible] = useState(false);
@@ -112,13 +113,10 @@ export default function About() {
             <p className="text-gray-400 leading-relaxed mb-8">
               Every line of code we write, every system we design, every strategy we craft is engineered for one purpose: <span className="text-teal-400 font-semibold">your exponential growth</span>.
             </p>
-            <a 
-              href="#book-call" 
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 rounded-xl font-semibold text-white transition-all shadow-lg shadow-teal-500/30 group"
-            >
+            <GlowButton href="#book-call">
               <span>Book a Strategy Call</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+              <ArrowRight className="w-4 h-4" />
+            </GlowButton>
           </div>
 
           {/* Visual Element */}
@@ -183,13 +181,10 @@ export default function About() {
           <div className="inline-flex flex-col items-center p-10 rounded-3xl" style={{ background: 'rgba(8, 15, 18, 0.6)', border: '1px solid rgba(40, 60, 65, 0.4)' }}>
             <h3 className="text-3xl font-bold text-white mb-2">Ready to Join the Elite?</h3>
             <p className="text-gray-400 mb-8 max-w-lg">Partner with AutoMatrix and unlock the automation infrastructure that powers the world's most successful companies.</p>
-            <a 
-              href="#book-call" 
-              className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white font-bold text-lg rounded-xl transition-all shadow-lg shadow-teal-500/30 group"
-            >
+            <GlowButton href="#book-call">
               <span>Book Your Call Today</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
+              <ArrowRight className="w-5 h-5" />
+            </GlowButton>
           </div>
         </div>
       </div>
