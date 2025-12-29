@@ -74,54 +74,6 @@ export default function Hero() {
               </Suspense>
             </div>
           </div>
-
-          {/* Floating Info Boxes with Connecting Lines */}
-          {/* Left Box - AutoMatrix AI */}
-          <div className="absolute left-[42%] top-[28%] z-20">
-            <div className="relative">
-              {/* Connecting line */}
-              <svg className="absolute -right-8 top-1/2 w-16 h-24" style={{ transform: 'translateY(-20%)' }}>
-                <path 
-                  d="M 0 12 Q 30 12 50 60" 
-                  stroke="rgba(20, 184, 166, 0.5)" 
-                  strokeWidth="1.5" 
-                  fill="none"
-                  className="animate-pulse"
-                />
-                <circle cx="50" cy="60" r="3" fill="rgba(20, 184, 166, 0.8)" className="animate-pulse" />
-              </svg>
-              {/* Box */}
-              <div className="px-5 py-3 rounded-xl border border-teal-500/40 bg-gradient-to-br from-teal-900/30 to-teal-800/20 backdrop-blur-sm shadow-lg shadow-teal-500/10">
-                <div className="flex items-center gap-1">
-                  <span className="text-lg font-bold bg-gradient-to-r from-teal-300 to-cyan-400 bg-clip-text text-transparent">AutoMatrix</span>
-                  <span className="text-lg font-bold text-white">AI</span>
-                </div>
-                <p className="text-xs text-gray-400 mt-0.5">Intelligent automation engine</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Box - Click Me */}
-          <div className="absolute right-[18%] top-[22%] z-20">
-            <div className="relative">
-              {/* Connecting line */}
-              <svg className="absolute -left-10 top-1/2 w-20 h-32" style={{ transform: 'translateY(-10%)' }}>
-                <path 
-                  d="M 70 12 Q 40 12 10 80" 
-                  stroke="rgba(20, 184, 166, 0.5)" 
-                  strokeWidth="1.5" 
-                  fill="none"
-                  className="animate-pulse"
-                />
-                <circle cx="10" cy="80" r="3" fill="rgba(20, 184, 166, 0.8)" className="animate-pulse" />
-              </svg>
-              {/* Box */}
-              <a href="#demo" className="block px-6 py-3 rounded-xl border border-teal-500/50 bg-gradient-to-br from-teal-600/40 to-teal-700/30 backdrop-blur-sm shadow-lg shadow-teal-500/20 hover:border-teal-400/70 hover:shadow-teal-400/30 transition-all cursor-pointer group">
-                <p className="text-xl font-bold text-white group-hover:text-teal-300 transition-colors">Click Me</p>
-                <p className="text-xs text-gray-300 mt-0.5">See how it works</p>
-              </a>
-            </div>
-          </div>
           <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] via-transparent to-transparent z-[1]"></div>
           
           {/* Hero Text - Left side */}
