@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, MessageSquare, Target, Rocket, Sparkles, CheckCircle2 } from 'lucide-react';
+import { GlowButton } from './ui/glow-button';
 
 export default function Process() {
   const [isVisible, setIsVisible] = useState(false);
@@ -173,13 +174,10 @@ export default function Process() {
             </div>
             <h3 className="text-3xl font-bold text-white mb-2">Start Your Transformation</h3>
             <p className="text-gray-400 mb-8 max-w-md">Book your discovery call today and let's architect your path to automation excellence.</p>
-            <a 
-              href="#book-call" 
-              className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white font-bold text-lg rounded-xl transition-all shadow-lg shadow-teal-500/30 group"
-            >
+            <GlowButton href="#book-call">
               <span>Book Your Discovery Call</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
+              <ArrowRight className="w-5 h-5" />
+            </GlowButton>
           </div>
         </div>
       </div>
