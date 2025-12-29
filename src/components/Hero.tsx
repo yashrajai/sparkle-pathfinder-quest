@@ -6,7 +6,6 @@ import { useTheme } from '../context/ThemeContext';
 import { useState } from 'react';
 import automatrixLogo from '@/assets/automatrix-logo.jpg';
 import Spline from '@splinetool/react-spline';
-import { VideoText } from './ui/video-text';
 
 export default function Hero() {
   const { theme, toggleTheme } = useTheme();
@@ -62,16 +61,6 @@ export default function Hero() {
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full opacity-20" style={{ background: 'radial-gradient(circle, rgba(13, 109, 109, 0.4) 0%, transparent 70%)', filter: 'blur(80px)' }}></div>
         <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full opacity-15" style={{ background: 'radial-gradient(circle, rgba(10, 85, 85, 0.5) 0%, transparent 70%)', filter: 'blur(100px)' }}></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full opacity-10" style={{ background: 'radial-gradient(ellipse, rgba(13, 109, 109, 0.3) 0%, transparent 60%)', filter: 'blur(60px)' }}></div>
-      </div>
-
-      {/* VideoText Header */}
-      <div className="relative z-10 flex justify-center items-center pt-8 pb-12">
-        <VideoText 
-          src="https://cdn.pixabay.com/video/2020/05/25/40130-424930032_large.mp4"
-          className="h-[200px] md:h-[280px] w-full max-w-5xl"
-        >
-          AUTOMATRIX
-        </VideoText>
       </div>
 
       {/* Hero Content */}
