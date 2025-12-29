@@ -14,12 +14,12 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden transition-colors duration-300" style={{ backgroundColor: '#000000' }}>
-      {/* Navigation */}
-      <nav className="relative z-50 w-full py-6 px-6">
+      {/* Navigation - Sticky */}
+      <nav className="fixed top-0 left-0 right-0 z-50 w-full py-4 px-6 bg-black/80 backdrop-blur-md border-b border-white/5">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <img src={automatrixLogo} alt="Automatrix Logo" className="w-12 h-12 object-contain" />
+            <img src={automatrixLogo} alt="Automatrix Logo" className="w-10 h-10 object-contain" />
             <span className="text-xl font-bold bg-gradient-to-r from-teal-300 via-cyan-400 to-teal-500 bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_auto]">
               AutoMatrix
             </span>
@@ -27,15 +27,10 @@ export default function Hero() {
           
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            <a href="#passion" className="text-gray-400 transition-colors hover:text-teal-400">Our Passion</a>
             <a href="#solutions" className="text-gray-400 transition-colors hover:text-teal-400">Solutions</a>
-            <a href="#team" className="text-gray-400 transition-colors hover:text-teal-400">Team</a>
-            <a href="#vision" className="text-gray-400 transition-colors hover:text-teal-400">Vision</a>
-            <button onClick={toggleTheme} className="p-2 rounded-lg transition-all hover:scale-110 bg-teal-500/10 text-teal-400">
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-            <a href="#" className="px-4 py-2 border border-white/20 rounded-lg font-medium text-white transition-colors hover:border-teal-500">Login</a>
-            <a href="#demo" className="px-6 py-2 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 rounded-lg font-medium transition-all text-white shadow-lg shadow-teal-500/20">Request Demo</a>
+            <a href="#process" className="text-gray-400 transition-colors hover:text-teal-400">Process</a>
+            <a href="#about" className="text-gray-400 transition-colors hover:text-teal-400">About</a>
+            <a href="#book-call" className="px-5 py-2 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 rounded-lg font-medium transition-all text-white shadow-lg shadow-teal-500/20">Book a Call</a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -44,6 +39,9 @@ export default function Hero() {
           </button>
         </div>
       </nav>
+
+      {/* Spacer for fixed navbar */}
+      <div className="h-16"></div>
 
       {/* Background Effect - Deep teal ambient glow on pure black */}
       <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 1 }}>
