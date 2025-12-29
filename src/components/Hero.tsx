@@ -4,7 +4,7 @@ import { FlipWords } from './ui/flip-words';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { useState } from 'react';
-import automatrixLogo from '@/assets/automatrix-logo.jpg';
+import automatrixLogo from '@/assets/automatrix-logo-new.png';
 import Spline from '@splinetool/react-spline';
 
 export default function Hero() {
