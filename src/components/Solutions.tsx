@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, MessageSquare, Image, Users, BarChart3, Zap, Database, Send, Play, ChevronDown } from 'lucide-react';
+import { Send, ChevronDown, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-// Animated Chat Mockup Component
+// AI Chatbot Mockup - matches reference exactly
 const ChatMockup = () => {
   const [typing, setTyping] = useState(false);
   
@@ -14,33 +14,31 @@ const ChatMockup = () => {
   }, []);
 
   return (
-    <div className="w-full h-full p-4 flex flex-col gap-3">
-      {/* Message from AI */}
-      <div className="flex items-start gap-2">
-        <div className="w-7 h-7 rounded-full bg-gradient-to-br from-teal-400 to-emerald-500 flex items-center justify-center flex-shrink-0">
-          <Zap className="w-3.5 h-3.5 text-white" />
+    <div className="w-full h-full p-5 flex flex-col gap-4">
+      {/* AI Message */}
+      <div className="flex items-center gap-3">
+        <div className="w-6 h-6 rounded-md bg-emerald-500 flex items-center justify-center flex-shrink-0">
+          <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
         </div>
-        <div className="bg-[#1a2a2a] rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-[80%]">
-          <div className="h-2 w-32 bg-gray-600 rounded-full" />
-        </div>
+        <div className="h-3 w-36 bg-gray-600/80 rounded-full" />
       </div>
       
-      {/* Message from User */}
-      <div className="flex items-start gap-2 justify-end">
-        <div className="bg-gradient-to-r from-teal-500/20 to-emerald-500/20 border border-teal-500/30 rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-[80%]">
-          <div className="h-2 w-40 bg-teal-400/50 rounded-full" />
-        </div>
-        <div className="w-7 h-7 rounded-full bg-gray-600 flex items-center justify-center flex-shrink-0 overflow-hidden">
-          <div className="w-full h-full bg-gradient-to-br from-gray-500 to-gray-600" />
+      {/* User Message */}
+      <div className="flex items-center gap-3 justify-end">
+        <div className="flex-1 h-3 bg-emerald-500/60 rounded-full max-w-[200px]" />
+        <div className="w-6 h-6 rounded-full bg-gray-600 flex items-center justify-center flex-shrink-0">
+          <span className="text-[8px] text-gray-300">👤</span>
         </div>
       </div>
 
       {/* Input field */}
       <div className="mt-auto">
-        <div className="bg-[#0a1414] border border-teal-500/30 rounded-xl px-4 py-3 flex items-center gap-2">
-          <div className={`h-2 flex-1 rounded-full transition-all duration-500 ${typing ? 'bg-teal-400/60 w-3/4' : 'bg-gray-700 w-1/2'}`} />
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-teal-500 to-emerald-500 flex items-center justify-center">
-            <Send className="w-4 h-4 text-white" />
+        <div className="bg-[#1a1f2e] border border-gray-700/50 rounded-lg px-4 py-3 flex items-center gap-3">
+          <div className={`h-2.5 flex-1 rounded-full transition-all duration-500 ${typing ? 'bg-emerald-500/50 w-2/3' : 'bg-gray-600/50 w-1/3'}`} />
+          <div className="w-7 h-7 rounded-md bg-emerald-500 flex items-center justify-center">
+            <Send className="w-3.5 h-3.5 text-white" />
           </div>
         </div>
       </div>
@@ -48,116 +46,165 @@ const ChatMockup = () => {
   );
 };
 
-// Image Generation Mockup
+// Image Generation Mockup - matches reference
 const ImageGenMockup = () => {
   const [progress, setProgress] = useState(0);
   
   useEffect(() => {
     const interval = setInterval(() => {
-      setProgress(prev => (prev >= 100 ? 0 : prev + 2));
-    }, 100);
+      setProgress(prev => (prev >= 100 ? 0 : prev + 1));
+    }, 50);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="w-full h-full p-4 flex flex-col gap-3">
-      {/* Preview area */}
-      <div className="flex-1 rounded-xl bg-gradient-to-br from-[#0a1a1a] to-[#0d2020] border border-teal-500/20 flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(20,184,166,0.03)_50%,transparent_75%)] bg-[length:20px_20px]" />
-        <div className="px-4 py-2 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-400 text-xs font-medium">
-          Generating Image...
+    <div className="w-full h-full p-5 flex flex-col gap-4">
+      {/* Preview area with stacked cards effect */}
+      <div className="flex-1 relative">
+        {[2, 1, 0].map((i) => (
+          <div
+            key={i}
+            className="absolute inset-0 rounded-xl bg-[#1a1f2e] border border-gray-700/30"
+            style={{
+              top: `${i * 6}px`,
+              transform: `scale(${1 - i * 0.02})`,
+              opacity: 1 - i * 0.15,
+              zIndex: 3 - i
+            }}
+          />
+        ))}
+        <div className="absolute inset-0 rounded-xl bg-[#1a1f2e] border border-gray-700/30 flex items-center justify-center z-10">
+          <span className="px-4 py-2 text-gray-400 text-sm">Generating Image...</span>
         </div>
       </div>
       
       {/* Progress bar */}
-      <div className="space-y-2">
-        <div className="h-2 bg-[#0a1414] rounded-full overflow-hidden">
+      <div className="flex items-center gap-3">
+        <div className="flex-1 h-2.5 bg-[#1a1f2e] rounded-full overflow-hidden">
           <motion.div 
-            className="h-full bg-gradient-to-r from-teal-500 to-emerald-400 rounded-full"
+            className="h-full bg-emerald-500 rounded-full"
             style={{ width: `${progress}%` }}
           />
         </div>
-        <div className="flex justify-end">
-          <span className="px-3 py-1 rounded-md bg-teal-500/20 border border-teal-500/30 text-teal-400 text-xs font-medium">
-            Generate
-          </span>
+        <button className="px-4 py-2 rounded-md bg-[#1a1f2e] border border-gray-600/50 text-white text-xs font-medium hover:bg-[#252a3a] transition-colors">
+          Generate
+        </button>
+      </div>
+    </div>
+  );
+};
+
+// Lead Generation Mockup - matches reference with stacked cards
+const LeadGenMockup = () => {
+  return (
+    <div className="w-full h-full p-5 flex flex-col gap-4">
+      {/* Stacked cards effect */}
+      <div className="relative flex-1">
+        {[2, 1, 0].map((i) => (
+          <div
+            key={i}
+            className="absolute inset-x-0 top-0 rounded-xl bg-[#1a1f2e] border border-gray-700/30"
+            style={{
+              top: `${i * 8}px`,
+              height: '70px',
+              transform: `scale(${1 - i * 0.02})`,
+              opacity: 1 - i * 0.2,
+              zIndex: 3 - i
+            }}
+          />
+        ))}
+        
+        {/* Main lead card */}
+        <div className="relative rounded-xl bg-[#1a1f2e] border border-gray-700/30 p-4 z-10">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-gray-600 flex items-center justify-center">
+              <Users className="w-4 h-4 text-gray-400" />
+            </div>
+            <div className="flex-1">
+              <div className="text-white text-sm font-medium">John Doe</div>
+              <div className="text-gray-500 text-xs">President of Sales</div>
+            </div>
+            <ChevronDown className="w-4 h-4 text-gray-500" />
+          </div>
+        </div>
+      </div>
+
+      {/* Action bar */}
+      <div className="flex items-center gap-3 mt-6">
+        <div className="flex-1 h-2.5 bg-emerald-500/40 rounded-full" />
+        <button className="px-4 py-2 rounded-md bg-[#1a1f2e] border border-gray-600/50 text-white text-xs font-medium">
+          Generate Leads
+        </button>
+      </div>
+    </div>
+  );
+};
+
+// Blockchain/Data Integration Mockup - matches reference with floating icons
+const DataMockup = () => {
+  const socialIcons = [
+    { icon: '𝕏', top: 10, right: 15 },
+    { icon: 'in', top: 35, right: 45, color: 'text-blue-400' },
+    { icon: '♪', top: 5, right: 70 },
+    { icon: 't', top: 55, right: 20, color: 'text-blue-300' },
+    { icon: '⟨/⟩', top: 30, left: 15 },
+    { icon: '◎', top: 60, right: 85 },
+  ];
+
+  return (
+    <div className="w-full h-full p-5 flex flex-col relative overflow-hidden">
+      {/* Floating social icons */}
+      {socialIcons.map((item, i) => (
+        <motion.div
+          key={i}
+          className={`absolute w-7 h-7 rounded-lg bg-[#252a3a] border border-gray-700/40 flex items-center justify-center text-xs ${item.color || 'text-gray-400'}`}
+          style={{ top: item.top, right: item.right, left: item.left }}
+          animate={{ y: [0, -4, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.4 }}
+        >
+          {item.icon}
+        </motion.div>
+      ))}
+
+      {/* Central 100% card */}
+      <div className="mt-auto mb-4">
+        <div className="inline-flex flex-col items-start">
+          <div className="px-5 py-3 rounded-lg bg-[#1a1f2e] border border-emerald-500/30">
+            <span className="text-emerald-400 font-bold text-xl">100 %</span>
+          </div>
+          <span className="text-gray-500 text-xs mt-2">Data transparency</span>
         </div>
       </div>
     </div>
   );
 };
 
-// Lead Generation Mockup
-const LeadGenMockup = () => {
+// Analytics/Consultation Mockup
+const AnalyticsMockup = () => {
   return (
-    <div className="w-full h-full p-4 flex flex-col gap-3">
-      {/* Lead cards stack */}
-      <div className="relative flex-1">
-        {[0, 1, 2].map((i) => (
-          <div 
-            key={i}
-            className="absolute inset-x-0 rounded-xl bg-gradient-to-br from-[#0d1a1a] to-[#0a1515] border border-teal-500/20 p-3"
-            style={{ 
-              top: `${i * 12}px`,
-              opacity: 1 - i * 0.2,
-              transform: `scale(${1 - i * 0.03})`,
-              zIndex: 3 - i
-            }}
-          >
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-600 to-gray-700 flex items-center justify-center">
-                <Users className="w-5 h-5 text-gray-400" />
-              </div>
-              <div className="flex-1">
-                <div className="h-2.5 w-24 bg-white/80 rounded-full mb-1.5" />
-                <div className="h-2 w-32 bg-gray-500 rounded-full" />
-              </div>
-              <ChevronDown className="w-4 h-4 text-gray-500" />
-            </div>
+    <div className="w-full h-full p-5 flex flex-col gap-3">
+      <div className="flex gap-3">
+        {/* Growth card */}
+        <div className="flex-1 rounded-lg bg-[#1a1f2e] border border-gray-700/30 p-3">
+          <div className="text-[10px] text-gray-500 mb-1">Growth</div>
+          <div className="flex items-center gap-1">
+            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
           </div>
-        ))}
+        </div>
       </div>
-
-      {/* Action bar */}
-      <div className="flex items-center gap-2 mt-8">
-        <div className="flex-1 h-2 bg-teal-500/30 rounded-full" />
-        <span className="px-3 py-1.5 rounded-md bg-white/90 text-gray-900 text-xs font-semibold">
-          Generate Leads
-        </span>
-      </div>
-    </div>
-  );
-};
-
-// Data Integration Mockup
-const DataMockup = () => {
-  return (
-    <div className="w-full h-full p-4 flex flex-col">
-      {/* Icons grid */}
-      <div className="flex-1 flex items-center justify-center">
-        <div className="relative">
-          {/* Central element */}
-          <div className="w-20 h-12 rounded-lg bg-gradient-to-r from-teal-500/20 to-emerald-500/20 border border-teal-500/40 flex items-center justify-center">
-            <span className="text-teal-400 font-bold text-sm">100 %</span>
-          </div>
-          <div className="text-center mt-2 text-xs text-gray-400">Data transparency</div>
-          
-          {/* Floating icons */}
-          {[
-            { Icon: Database, top: -30, right: -40 },
-            { Icon: BarChart3, top: -20, left: -50 },
-            { Icon: Zap, bottom: -25, right: -30 },
-            { Icon: Users, bottom: -20, left: -40 },
-          ].map(({ Icon, ...pos }, i) => (
-            <motion.div
+      
+      {/* Efficiency bar */}
+      <div className="flex-1 rounded-lg bg-[#1a1f2e] border border-emerald-500/20 p-3">
+        <div className="text-[10px] text-gray-500 mb-2">Efficiency-87%</div>
+        <div className="flex items-end gap-1 h-10">
+          {[40, 60, 35, 75, 50, 85, 45].map((h, i) => (
+            <motion.div 
               key={i}
-              className="absolute w-8 h-8 rounded-lg bg-[#1a2525] border border-gray-700 flex items-center justify-center"
-              style={pos}
-              animate={{ y: [0, -5, 0] }}
-              transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
-            >
-              <Icon className="w-4 h-4 text-gray-400" />
-            </motion.div>
+              className="flex-1 bg-gradient-to-t from-emerald-600 to-emerald-400 rounded-sm"
+              initial={{ height: 0 }}
+              animate={{ height: `${h}%` }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+            />
           ))}
         </div>
       </div>
@@ -165,64 +212,27 @@ const DataMockup = () => {
   );
 };
 
-// Analytics Mockup
-const AnalyticsMockup = () => {
-  return (
-    <div className="w-full h-full p-4 flex flex-col gap-3">
-      <div className="flex gap-3">
-        {/* Efficiency card */}
-        <div className="flex-1 rounded-xl bg-gradient-to-br from-teal-500/10 to-emerald-500/10 border border-teal-500/30 p-3">
-          <div className="text-[10px] text-gray-400 mb-1">Efficiency</div>
-          <div className="text-lg font-bold text-teal-400">87%</div>
-        </div>
-        {/* Growth card */}
-        <div className="flex-1 rounded-xl bg-gradient-to-br from-emerald-500/10 to-teal-500/10 border border-emerald-500/30 p-3">
-          <div className="text-[10px] text-gray-400 mb-1">Growth</div>
-          <div className="flex items-center gap-1">
-            <div className="w-2 h-2 rounded-full bg-emerald-400" />
-            <ArrowRight className="w-3 h-3 text-emerald-400" />
-          </div>
-        </div>
-      </div>
-      
-      {/* Cost reduction */}
-      <div className="flex-1 rounded-xl bg-[#0a1414] border border-gray-800 p-3 flex items-end">
-        <div className="w-full">
-          <div className="flex items-end gap-1 h-12">
-            {[60, 45, 70, 35, 50, 25].map((h, i) => (
-              <motion.div 
-                key={i}
-                className="flex-1 bg-gradient-to-t from-teal-500 to-emerald-400 rounded-t"
-                initial={{ height: 0 }}
-                animate={{ height: `${h}%` }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              />
-            ))}
-          </div>
-          <div className="mt-2 text-[10px] text-gray-500">Cost: -67%</div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// Suitable For Tags Component
+// Suitable For Tags Component - GREEN background as in reference
 const SuitableForSection = () => {
-  const tags = ['Creative agencies', 'Startup', 'Creators & marketers', 'Small business', 'Enterprise'];
+  const tags = ['Creative agencies', 'Startup', 'Creators & marketers', 'Small business'];
   
   return (
-    <div className="w-full h-full p-5 flex flex-col" style={{ background: 'linear-gradient(135deg, #0d4d40 0%, #064e3b 50%, #047857 100%)' }}>
-      <h4 className="text-white font-semibold text-lg mb-4">We are suitable for</h4>
-      <div className="w-12 h-0.5 bg-white/30 mb-4" />
-      <div className="flex flex-wrap gap-2">
+    <div 
+      className="w-full h-full p-6 flex flex-col"
+      style={{ background: 'linear-gradient(145deg, #0d7a5f 0%, #059669 50%, #047857 100%)' }}
+    >
+      <h4 className="text-white font-semibold text-lg mb-3">We are suitable for</h4>
+      <div className="w-16 h-0.5 bg-white/40 mb-5" />
+      <div className="flex flex-wrap gap-2.5">
         {tags.map((tag, i) => (
           <motion.span
             key={tag}
-            className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="px-5 py-2.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 text-white text-sm font-medium whitespace-nowrap"
+            initial={{ opacity: 0, x: -20, rotate: i % 2 === 0 ? -5 : 5 }}
+            whileInView={{ opacity: 1, x: 0, rotate: i % 2 === 0 ? -3 : 3 }}
             transition={{ delay: i * 0.1 }}
-            whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.2)' }}
+            whileHover={{ scale: 1.05, rotate: 0, backgroundColor: 'rgba(255,255,255,0.25)' }}
+            style={{ transform: `rotate(${i % 2 === 0 ? -3 : 3}deg)` }}
           >
             {tag}
           </motion.span>
@@ -248,222 +258,149 @@ export default function Solutions() {
     return () => observer.disconnect(); 
   }, []);
 
-  const services = [
-    { 
-      title: 'AI-Powered Chatbots', 
-      description: 'Our chatbots are built to understand your business type and deliver personalized experiences.',
-      Mockup: ChatMockup,
-      size: 'large'
-    },
-    { 
-      title: 'Image & Video Generation', 
-      description: 'Generate high-quality visuals matched to your brand style.',
-      Mockup: ImageGenMockup,
-      size: 'medium'
-    },
-    { 
-      title: 'Blockchain Integration', 
-      description: 'From smart contract validation to predictive analytics.',
-      Mockup: DataMockup,
-      size: 'medium'
-    },
-    { 
-      title: 'Lead Generation', 
-      description: 'Generate high quality leads for your business growth.',
-      Mockup: LeadGenMockup,
-      size: 'medium'
-    },
-    { 
-      title: 'AI Consultation', 
-      description: 'We engineer smart tools built around your business logic.',
-      Mockup: AnalyticsMockup,
-      size: 'medium'
-    },
-  ];
-
   return (
     <section 
       ref={sectionRef} 
       id="solutions" 
-      className="relative py-24 md:py-32 px-4 md:px-6 overflow-hidden"
-      style={{ backgroundColor: '#050a0a' }}
+      className="relative py-24 md:py-32 px-4 md:px-8 overflow-hidden"
+      style={{ backgroundColor: '#0c0f14' }}
     >
-      {/* Subtle grid background */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{ 
-        backgroundImage: 'linear-gradient(rgba(20,184,166,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(20,184,166,0.5) 1px, transparent 1px)',
-        backgroundSize: '60px 60px'
-      }} />
-
-      {/* Ambient glows */}
-      <div className="absolute top-1/4 left-0 w-[500px] h-[500px] rounded-full opacity-20" 
-        style={{ background: 'radial-gradient(circle, rgba(13, 109, 109, 0.4) 0%, transparent 70%)', filter: 'blur(100px)' }}
-      />
-      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full opacity-15" 
-        style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, transparent 70%)', filter: 'blur(100px)' }}
-      />
-
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header Section */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 mb-16 md:mb-20">
+        
+        {/* Bento Grid Layout - Exact match to reference */}
+        <div className="grid grid-cols-12 gap-4 md:gap-5">
+          
+          {/* Row 1: Header + Blockchain Card */}
+          {/* Header - spans 7 columns */}
           <motion.div
+            className="col-span-12 lg:col-span-7 flex items-end pb-4"
             initial={{ opacity: 0, y: 30 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
               <span className="text-white">What We </span>
-              <span className="bg-gradient-to-r from-teal-400 via-emerald-400 to-teal-500 bg-clip-text text-transparent">Offer</span>
+              <span className="text-emerald-400">Offer</span>
               <span className="text-white"> – AI solutions that solve real problems, not just look cool</span>
             </h2>
           </motion.div>
-          
-          <motion.div 
-            className="flex flex-col justify-end"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            <p className="text-gray-400 text-lg mb-6">
-              We provide intelligent solutions to help brands think fast, build smart, and grow big beyond boundaries.
-            </p>
-            <a 
-              href="#book-call"
-              className="inline-flex items-center gap-3 px-6 py-4 rounded-full bg-white text-gray-900 font-semibold hover:bg-gray-100 transition-all duration-300 w-fit group"
-            >
-              <span>Let's Talk</span>
-              <div className="w-8 h-8 rounded-full bg-gray-900 flex items-center justify-center group-hover:translate-x-1 transition-transform">
-                <ArrowRight className="w-4 h-4 text-white" />
-              </div>
-            </a>
-          </motion.div>
-        </div>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {/* Large Card - AI Chatbots */}
+          {/* Blockchain Integration Card - spans 5 columns, row-span-2 */}
           <motion.div
-            className="md:row-span-2 rounded-3xl overflow-hidden group cursor-pointer"
+            className="col-span-12 md:col-span-6 lg:col-span-5 row-span-1 lg:row-span-2 rounded-2xl overflow-hidden"
             style={{ 
-              background: 'linear-gradient(145deg, #0a1515 0%, #081010 100%)',
-              border: '1px solid rgba(20, 184, 166, 0.15)'
+              background: '#12161f',
+              border: '1px solid rgba(75, 85, 99, 0.3)'
+            }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            whileHover={{ borderColor: 'rgba(16, 185, 129, 0.4)' }}
+          >
+            <div className="h-40 md:h-48">
+              <DataMockup />
+            </div>
+            <div className="px-6 pb-6">
+              <h3 className="text-lg font-bold text-white mb-2">Blockchain Integration</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">From smart contract validation to predictive analytics.</p>
+            </div>
+          </motion.div>
+
+          {/* Row 2: AI Chatbots Card - spans 4 columns, row-span-2 */}
+          <motion.div
+            className="col-span-12 md:col-span-6 lg:col-span-4 row-span-1 lg:row-span-2 rounded-2xl overflow-hidden"
+            style={{ 
+              background: '#12161f',
+              border: '1px solid rgba(75, 85, 99, 0.3)'
             }}
             initial={{ opacity: 0, y: 40 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            whileHover={{ borderColor: 'rgba(20, 184, 166, 0.4)', y: -5 }}
+            whileHover={{ borderColor: 'rgba(16, 185, 129, 0.4)' }}
           >
-            <div className="h-64 md:h-80">
+            <div className="h-52 md:h-64">
               <ChatMockup />
             </div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-white mb-2">AI-Powered Chatbots</h3>
-              <p className="text-gray-400 text-sm">Our chatbots are built to understand your business type and deliver personalized experiences.</p>
+            <div className="px-6 pb-6">
+              <h3 className="text-lg font-bold text-white mb-2">AI-Powered Chatbots</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">Our chatbots are built to understand your business type.</p>
             </div>
           </motion.div>
 
-          {/* Suitable For Card */}
+          {/* Suitable For Card - spans 3 columns */}
           <motion.div
-            className="rounded-3xl overflow-hidden"
+            className="col-span-12 md:col-span-6 lg:col-span-3 rounded-2xl overflow-hidden"
             initial={{ opacity: 0, y: 40 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            whileHover={{ y: -5 }}
+            whileHover={{ scale: 1.02 }}
           >
             <SuitableForSection />
           </motion.div>
 
-          {/* Data Integration Card */}
+          {/* Row 3: Image Generation - spans 4 columns */}
           <motion.div
-            className="rounded-3xl overflow-hidden group cursor-pointer"
+            className="col-span-12 md:col-span-6 lg:col-span-4 rounded-2xl overflow-hidden"
             style={{ 
-              background: 'linear-gradient(145deg, #0a1515 0%, #081010 100%)',
-              border: '1px solid rgba(20, 184, 166, 0.15)'
+              background: '#12161f',
+              border: '1px solid rgba(75, 85, 99, 0.3)'
             }}
             initial={{ opacity: 0, y: 40 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            whileHover={{ borderColor: 'rgba(20, 184, 166, 0.4)', y: -5 }}
+            whileHover={{ borderColor: 'rgba(16, 185, 129, 0.4)' }}
           >
-            <div className="h-48">
-              <DataMockup />
+            <div className="h-44">
+              <ImageGenMockup />
             </div>
             <div className="px-6 pb-6">
-              <h3 className="text-lg font-bold text-white mb-1">Blockchain Integration</h3>
-              <p className="text-gray-400 text-sm">From smart contract validation to predictive analytics.</p>
+              <h3 className="text-lg font-bold text-white mb-2">Image & Video Generation</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">Generate high-quality visuals matched to your style.</p>
             </div>
           </motion.div>
 
-          {/* Image Generation Card */}
+          {/* Lead Generation - spans 4 columns */}
           <motion.div
-            className="rounded-3xl overflow-hidden group cursor-pointer"
+            className="col-span-12 md:col-span-6 lg:col-span-4 rounded-2xl overflow-hidden"
             style={{ 
-              background: 'linear-gradient(145deg, #0a1515 0%, #081010 100%)',
-              border: '1px solid rgba(20, 184, 166, 0.15)'
+              background: '#12161f',
+              border: '1px solid rgba(75, 85, 99, 0.3)'
+            }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.35 }}
+            whileHover={{ borderColor: 'rgba(16, 185, 129, 0.4)' }}
+          >
+            <div className="h-44">
+              <LeadGenMockup />
+            </div>
+            <div className="px-6 pb-6">
+              <h3 className="text-lg font-bold text-white mb-2">Lead Generation</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">Generate high quality lead for your business growth.</p>
+            </div>
+          </motion.div>
+
+          {/* Row 4: Analytics/Consultation Card */}
+          <motion.div
+            className="col-span-12 md:col-span-6 lg:col-span-4 rounded-2xl overflow-hidden"
+            style={{ 
+              background: '#12161f',
+              border: '1px solid rgba(75, 85, 99, 0.3)'
             }}
             initial={{ opacity: 0, y: 40 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            whileHover={{ borderColor: 'rgba(20, 184, 166, 0.4)', y: -5 }}
+            whileHover={{ borderColor: 'rgba(16, 185, 129, 0.4)' }}
           >
-            <div className="h-48">
-              <ImageGenMockup />
+            <div className="h-36">
+              <AnalyticsMockup />
             </div>
             <div className="px-6 pb-6">
-              <h3 className="text-lg font-bold text-white mb-1">Image & Video Generation</h3>
-              <p className="text-gray-400 text-sm">Generate high-quality visuals matched to your style.</p>
+              <h3 className="text-lg font-bold text-white mb-2">AI Consultation</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">We engineer smart tools built around your business logic.</p>
             </div>
           </motion.div>
 
-          {/* Lead Generation Card */}
-          <motion.div
-            className="rounded-3xl overflow-hidden group cursor-pointer"
-            style={{ 
-              background: 'linear-gradient(145deg, #0a1515 0%, #081010 100%)',
-              border: '1px solid rgba(20, 184, 166, 0.15)'
-            }}
-            initial={{ opacity: 0, y: 40 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            whileHover={{ borderColor: 'rgba(20, 184, 166, 0.4)', y: -5 }}
-          >
-            <div className="h-48">
-              <LeadGenMockup />
-            </div>
-            <div className="px-6 pb-6">
-              <h3 className="text-lg font-bold text-white mb-1">Lead Generation</h3>
-              <p className="text-gray-400 text-sm">Generate high quality leads for your business growth.</p>
-            </div>
-          </motion.div>
-
-          {/* Analytics / Consultation Card */}
-          <motion.div
-            className="lg:col-span-2 rounded-3xl overflow-hidden group cursor-pointer"
-            style={{ 
-              background: 'linear-gradient(145deg, #0a1515 0%, #081010 100%)',
-              border: '1px solid rgba(20, 184, 166, 0.15)'
-            }}
-            initial={{ opacity: 0, y: 40 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            whileHover={{ borderColor: 'rgba(20, 184, 166, 0.4)', y: -5 }}
-          >
-            <div className="grid md:grid-cols-2">
-              <div className="h-48 md:h-56">
-                <AnalyticsMockup />
-              </div>
-              <div className="p-6 flex flex-col justify-center">
-                <h3 className="text-xl font-bold text-white mb-2">AI Consultation</h3>
-                <p className="text-gray-400 text-sm mb-4">We engineer smart tools built around your business logic. Custom AI solutions tailored to your specific needs.</p>
-                <a 
-                  href="#book-call"
-                  className="inline-flex items-center gap-2 text-teal-400 font-medium text-sm hover:text-teal-300 transition-colors w-fit group/link"
-                >
-                  <span>Learn more</span>
-                  <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                </a>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
