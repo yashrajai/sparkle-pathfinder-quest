@@ -1,7 +1,6 @@
 import React from "react";
 import { ThemeProvider } from "./context/ThemeContext";
 import Hero from "./components/Hero";
-import ProblemStatement from "./components/ProblemStatement";
 import Solutions from "./components/Solutions";
 import Process from "./components/Process";
 import About from "./components/About";
@@ -14,7 +13,6 @@ const App: React.FC = () => {
     <ThemeProvider>
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
         <Hero />
-        <ProblemStatement />
         <Solutions />
         <Process />
         <About />
