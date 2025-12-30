@@ -105,32 +105,54 @@ export default function About() {
           <PinContainer
             title="Connect on LinkedIn"
             href="https://www.linkedin.com/in/yashraj2333/"
-            containerClassName="h-[28rem] w-full max-w-3xl"
+            containerClassName="h-[30rem] w-full max-w-4xl"
           >
-            <div className="flex flex-col md:flex-row gap-6 w-[580px] h-[320px]">
-              {/* Photo */}
-              <div className="flex-shrink-0">
-                <img 
-                  src={founderPhoto} 
-                  alt="Yash Raj - Founder" 
-                  className="w-40 h-48 md:w-48 md:h-64 object-cover rounded-xl border border-white/10"
-                />
-                <div className="flex items-center gap-2 mt-4">
-                  <Linkedin className="w-5 h-5 text-cyan-400" />
-                  <span className="text-sm text-gray-400">Yash Raj</span>
+            <div 
+              className="flex flex-col md:flex-row gap-8 w-[700px] h-[340px] p-8 rounded-2xl relative overflow-hidden"
+              style={{ 
+                background: 'linear-gradient(135deg, rgba(15, 25, 30, 0.95) 0%, rgba(8, 15, 18, 0.98) 100%)',
+                border: '1px solid rgba(45, 80, 85, 0.5)',
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.05)'
+              }}
+            >
+              {/* Subtle gradient overlay */}
+              <div className="absolute inset-0 opacity-40" style={{ background: 'radial-gradient(circle at 0% 0%, rgba(20, 184, 166, 0.15) 0%, transparent 50%)' }} />
+              
+              {/* Photo with enhanced styling */}
+              <div className="flex-shrink-0 relative z-10">
+                <div className="relative group">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-teal-500 via-cyan-400 to-teal-500 rounded-2xl blur-sm opacity-50 group-hover:opacity-75 transition-opacity" />
+                  <img 
+                    src={founderPhoto} 
+                    alt="Yash Raj - Founder" 
+                    className="relative w-44 h-56 object-cover rounded-xl border border-white/20"
+                  />
+                </div>
+                <div className="flex items-center gap-3 mt-5 px-1">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 flex items-center justify-center">
+                    <Linkedin className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-white font-semibold text-sm">Yash Raj</p>
+                    <p className="text-gray-500 text-xs">Founder & CEO</p>
+                  </div>
                 </div>
               </div>
               
-              {/* Content */}
-              <div className="flex flex-col justify-center">
-                <h3 className="text-xl font-bold bg-gradient-to-r from-teal-300 via-cyan-400 to-teal-500 bg-clip-text text-transparent mb-2">
-                  Automatrix
+              {/* Content with better typography */}
+              <div className="flex flex-col justify-center relative z-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="h-px w-8 bg-gradient-to-r from-teal-500 to-transparent" />
+                  <span className="text-xs uppercase tracking-widest text-teal-400 font-medium">About the Agency</span>
+                </div>
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-teal-300 via-cyan-400 to-teal-500 bg-clip-text text-transparent mb-4">
+                  AutoMatrix
                 </h3>
-                <p className="text-sm text-gray-300 leading-relaxed">
-                  Automatrix is a systems-focused AI automation agency built to help businesses replace manual operations with structured, scalable automation. The work centers on designing reliable workflows that connect tools, data, and decision-making into one cohesive system.
+                <p className="text-gray-300 leading-relaxed mb-4">
+                  A systems-focused AI automation agency built to help businesses replace manual operations with structured, scalable automation. We design reliable workflows that connect tools, data, and decision-making into one cohesive system.
                 </p>
-                <p className="text-sm text-gray-400 leading-relaxed mt-4">
-                  Every implementation is built for real-world use — not demos, not templates. The focus is on clarity, stability, and long-term performance.
+                <p className="text-gray-500 leading-relaxed text-sm italic border-l-2 border-teal-500/50 pl-4">
+                  "Every implementation is built for real-world use — not demos, not templates. The focus is on clarity, stability, and long-term performance."
                 </p>
               </div>
             </div>
