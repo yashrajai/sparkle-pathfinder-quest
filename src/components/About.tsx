@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Award, Globe, Users, Zap, Target, Shield, TrendingUp } from 'lucide-react';
+import { ArrowRight, Award, Globe, Users, Zap, Target, Shield, TrendingUp, Linkedin } from 'lucide-react';
 import { GlowButton } from './ui/glow-button';
+import { PinContainer } from './ui/3d-pin';
+import founderPhoto from '@/assets/founder-photo.jpeg';
 
 export default function About() {
   const [isVisible, setIsVisible] = useState(false);
@@ -96,6 +98,43 @@ export default function About() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Founder Card with 3D Pin Effect */}
+        <div className={`flex justify-center mb-24 transition-all duration-700 delay-350 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <PinContainer
+            title="Connect on LinkedIn"
+            href="https://www.linkedin.com/in/yashraj2333/"
+            containerClassName="h-[28rem] w-full max-w-3xl"
+          >
+            <div className="flex flex-col md:flex-row gap-6 w-[580px] h-[320px]">
+              {/* Photo */}
+              <div className="flex-shrink-0">
+                <img 
+                  src={founderPhoto} 
+                  alt="Yash Raj - Founder" 
+                  className="w-40 h-48 md:w-48 md:h-64 object-cover rounded-xl border border-white/10"
+                />
+                <div className="flex items-center gap-2 mt-4">
+                  <Linkedin className="w-5 h-5 text-cyan-400" />
+                  <span className="text-sm text-gray-400">Yash Raj</span>
+                </div>
+              </div>
+              
+              {/* Content */}
+              <div className="flex flex-col justify-center">
+                <h3 className="text-xl font-bold bg-gradient-to-r from-teal-300 via-cyan-400 to-teal-500 bg-clip-text text-transparent mb-2">
+                  Automatrix
+                </h3>
+                <p className="text-sm text-gray-300 leading-relaxed">
+                  Automatrix is a systems-focused AI automation agency built to help businesses replace manual operations with structured, scalable automation. The work centers on designing reliable workflows that connect tools, data, and decision-making into one cohesive system.
+                </p>
+                <p className="text-sm text-gray-400 leading-relaxed mt-4">
+                  Every implementation is built for real-world use — not demos, not templates. The focus is on clarity, stability, and long-term performance.
+                </p>
+              </div>
+            </div>
+          </PinContainer>
         </div>
 
         {/* Story Section */}
