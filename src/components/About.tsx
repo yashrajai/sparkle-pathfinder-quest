@@ -195,6 +195,86 @@ export default function About() {
           </div>
         </div>
 
+        {/* Integrations Section */}
+        <div className={`text-center transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <span className="inline-block px-4 py-2 mb-6 text-sm font-medium text-orange-400 border border-orange-400/30 rounded-full bg-orange-400/10">
+            POWERFUL INTEGRATIONS
+          </span>
+          <h3 className="text-4xl md:text-5xl font-bold text-white mb-16">
+            Seamlessly Integrate<br />Every App
+          </h3>
+          
+          {/* Orb and Icons Container */}
+          <div className="relative max-w-4xl mx-auto mb-12">
+            {/* Central Orb */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 rounded-full opacity-80 pointer-events-none"
+              style={{
+                background: 'radial-gradient(ellipse at 30% 30%, rgba(56, 189, 248, 0.4) 0%, rgba(20, 184, 166, 0.3) 30%, rgba(249, 115, 22, 0.4) 70%, transparent 100%)',
+                filter: 'blur(40px)',
+              }}
+            />
+            
+            {/* Icons Grid */}
+            <div className="relative z-10 grid grid-cols-5 md:grid-cols-10 gap-4 md:gap-6 justify-items-center">
+              {/* Row 1 */}
+              {[
+                { icon: '🔧', bg: 'rgba(59, 130, 246, 0.2)' },
+                { icon: '📅', bg: 'rgba(255, 255, 255, 0.1)' },
+                { icon: '🎯', bg: 'rgba(249, 115, 22, 0.2)' },
+                { icon: '💬', bg: 'rgba(16, 185, 129, 0.2)' },
+                { icon: '⚡', bg: 'rgba(99, 102, 241, 0.2)' },
+                { icon: '☁️', bg: 'rgba(56, 189, 248, 0.2)' },
+                { icon: '📞', bg: 'rgba(34, 197, 94, 0.2)' },
+                { icon: '🤖', bg: 'rgba(255, 255, 255, 0.1)' },
+                { icon: '✨', bg: 'rgba(249, 115, 22, 0.2)' },
+                { icon: '📊', bg: 'rgba(168, 85, 247, 0.2)' },
+              ].map((item, i) => (
+                <div 
+                  key={i}
+                  className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center text-xl md:text-2xl transition-transform hover:scale-110"
+                  style={{ background: item.bg, border: '1px solid rgba(255,255,255,0.1)' }}
+                >
+                  {item.icon}
+                </div>
+              ))}
+              
+              {/* Row 2 */}
+              {[
+                { icon: '🔗', bg: 'rgba(59, 130, 246, 0.2)' },
+                { icon: '📈', bg: 'rgba(236, 72, 153, 0.2)' },
+                { icon: '🎨', bg: 'rgba(99, 102, 241, 0.2)' },
+                { icon: '🔒', bg: 'rgba(16, 185, 129, 0.2)' },
+                { icon: '📧', bg: 'rgba(249, 115, 22, 0.2)' },
+                { icon: '💎', bg: 'rgba(56, 189, 248, 0.2)' },
+                { icon: '🚀', bg: 'rgba(168, 85, 247, 0.2)' },
+                { icon: '🔄', bg: 'rgba(249, 115, 22, 0.2)' },
+                { icon: '📱', bg: 'rgba(59, 130, 246, 0.2)' },
+                { icon: '🌐', bg: 'rgba(236, 72, 153, 0.2)' },
+              ].map((item, i) => (
+                <div 
+                  key={i + 10}
+                  className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center text-xl md:text-2xl transition-transform hover:scale-110"
+                  style={{ background: item.bg, border: '1px solid rgba(255,255,255,0.1)' }}
+                >
+                  {item.icon}
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Explore Button */}
+          <button 
+            className="px-8 py-3 rounded-full text-white font-medium transition-all hover:scale-105"
+            style={{ 
+              background: 'rgba(255,255,255,0.1)', 
+              border: '1px solid rgba(255,255,255,0.2)',
+              backdropFilter: 'blur(10px)'
+            }}
+          >
+            Explore All
+          </button>
+        </div>
+
       </div>
     </section>
   );
