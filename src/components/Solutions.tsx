@@ -286,7 +286,7 @@ export default function Solutions() {
       ref={sectionRef} 
       id="solutions" 
       className="relative py-24 md:py-32 px-4 md:px-6 overflow-hidden"
-      style={{ backgroundColor: '#050a0a' }}
+      style={{ backgroundColor: '#000000' }}
     >
       {/* Subtle grid background */}
       <div className="absolute inset-0 opacity-[0.03]" style={{ 
