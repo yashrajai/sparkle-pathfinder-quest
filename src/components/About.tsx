@@ -27,23 +27,6 @@ export default function About() {
     { number: '24/7', label: 'Global Support', icon: Globe },
   ];
 
-  const values = [
-    {
-      icon: Target,
-      title: 'Precision',
-      description: 'Every solution is engineered with meticulous attention to detail, ensuring flawless execution at scale.'
-    },
-    {
-      icon: Zap,
-      title: 'Innovation',
-      description: 'We stay at the bleeding edge of technology, continuously evolving our platforms to deliver competitive advantages.'
-    },
-    {
-      icon: Award,
-      title: 'Excellence',
-      description: 'We hold ourselves to the highest standards, delivering enterprise-grade solutions that exceed expectations.'
-    },
-  ];
 
   return (
     <section 
@@ -212,42 +195,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* Values Grid */}
-        <div className={`mb-20 transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h3 className="text-3xl font-bold text-white text-center mb-12">
-            Our <span className="bg-gradient-to-r from-teal-300 via-cyan-400 to-teal-500 bg-clip-text text-transparent">Core Values</span>
-          </h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            {values.map((value, index) => (
-              <div 
-                key={index}
-                className="group rounded-2xl p-8 text-center transition-all duration-500 hover:scale-105"
-                style={{ 
-                  background: 'rgba(8, 15, 18, 0.85)',
-                  border: '1px solid rgba(40, 60, 65, 0.4)',
-                }}
-              >
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-400 to-cyan-500 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform shadow-lg">
-                  <value.icon className="w-8 h-8 text-white" />
-                </div>
-                <h4 className="text-xl font-bold text-white mb-3">{value.title}</h4>
-                <p className="text-gray-400 text-sm leading-relaxed">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Final CTA */}
-        <div className={`text-center transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="inline-flex flex-col items-center p-10 rounded-3xl" style={{ background: 'rgba(8, 15, 18, 0.6)', border: '1px solid rgba(40, 60, 65, 0.4)' }}>
-            <h3 className="text-3xl font-bold text-white mb-2">Ready to Join the Elite?</h3>
-            <p className="text-gray-400 mb-8 max-w-lg">Partner with AutoMatrix and unlock the automation infrastructure that powers the world's most successful companies.</p>
-            <GlowButton href="#book-call">
-              <span>Book Your Call Today</span>
-              <ArrowRight className="w-5 h-5" />
-            </GlowButton>
-          </div>
-        </div>
       </div>
     </section>
   );
