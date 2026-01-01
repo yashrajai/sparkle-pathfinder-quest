@@ -21,23 +21,27 @@ export default function Process() {
   const steps = [
     {
       number: '01',
-      title: 'Understand Your Vision',
-      description: 'We start with a discovery session to learn about your goals, challenges, and how AI can make a real impact in your business.',
+      title: 'Discovery Call',
+      subtitle: 'Understanding Your Vision',
+      description: 'We begin with a deep-dive strategy session to understand your business goals, current pain points, and growth objectives. This is where we map your success.',
     },
     {
       number: '02',
-      title: 'Design the Right Solution',
-      description: 'Our team maps out a custom strategy, whether it\'s a chatbot, AI automation, content generation, or blockchain integration, tailored precisely to your needs.',
+      title: 'Strategy Design',
+      subtitle: 'Architecting Your Solution',
+      description: 'Our team crafts a bespoke automation strategy tailored to your unique needs. We design systems that scale with your ambitions.',
     },
     {
       number: '03',
-      title: 'Build, Test & Launch',
-      description: 'We develop your solution using real data, test it thoroughly, and deploy it into your workflow with minimal disruption.',
+      title: 'Implementation',
+      subtitle: 'Building Your Future',
+      description: 'We deploy your automation infrastructure with precision. Every component is tested, optimized, and refined for peak performance.',
     },
     {
       number: '04',
-      title: 'Support & Scale',
-      description: 'After launch, we provide ongoing support, performance monitoring, and upgrades, so your AI grows as your business does.',
+      title: 'Scale & Optimize',
+      subtitle: 'Accelerating Growth',
+      description: 'Launch is just the beginning. We continuously monitor, optimize, and scale your systems to maximize ROI and drive exponential growth.',
     },
   ];
 
@@ -71,15 +75,15 @@ export default function Process() {
         <div className={`h-px bg-gray-800 mb-0 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100' : 'opacity-0'}`} />
 
         {/* Tab Navigation */}
-        <div className={`grid grid-cols-4 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`grid grid-cols-4 gap-2 md:gap-3 mt-8 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           {steps.map((step, index) => (
             <button
               key={index}
               onClick={() => setActiveStep(index)}
-              className={`relative py-5 px-4 text-left transition-all duration-300 border-b-2 ${
+              className={`relative py-4 md:py-5 px-4 md:px-6 text-center transition-all duration-300 rounded-xl border ${
                 activeStep === index 
-                  ? 'border-emerald-400' 
-                  : 'border-gray-800 hover:border-gray-700'
+                  ? 'border-emerald-400/50 bg-emerald-400/5' 
+                  : 'border-gray-800 bg-transparent hover:border-gray-700 hover:bg-white/[0.02]'
               }`}
             >
               <span className={`text-lg md:text-xl font-semibold transition-colors duration-300 ${
@@ -134,10 +138,13 @@ export default function Process() {
                 transition={{ duration: 0.3, ease: 'easeOut' }}
                 className="max-w-2xl"
               >
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
                   {steps[activeStep].title}
                 </h3>
-                <p className="text-gray-400 text-base md:text-lg leading-relaxed">
+                <p className="text-emerald-400/80 text-sm md:text-base font-medium mb-4">
+                  {steps[activeStep].subtitle}
+                </p>
+                <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-xl">
                   {steps[activeStep].description}
                 </p>
               </motion.div>
