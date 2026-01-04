@@ -3,7 +3,34 @@ import { ArrowRight, Award, Globe, Users, Zap, Target, Shield, TrendingUp, Linke
 import { GlowButton } from './ui/glow-button';
 import { PinContainer } from './ui/3d-pin';
 import founderPhoto from '@/assets/founder-photo.jpeg';
+import { FaAws, FaSlack, FaWhatsapp, FaMeta, FaStripe } from 'react-icons/fa6';
+import { SiGooglecalendar, SiHubspot, SiZendesk, SiSalesforce, SiOpenai, SiZapier, SiAsana, SiRazorpay, SiN8N, SiSquare } from 'react-icons/si';
+import { TbBrandGoogle } from 'react-icons/tb';
 
+// Integration icons data
+const topRowIcons = [
+  { icon: FaAws, color: '#FF9900', glow: 'rgba(255, 153, 0, 0.2)' },
+  { icon: SiGooglecalendar, color: '#4285F4', glow: 'rgba(66, 133, 244, 0.2)' },
+  { icon: SiHubspot, color: '#FF7A59', glow: 'rgba(255, 122, 89, 0.2)' },
+  { icon: FaSlack, color: '#4A154B', glow: 'rgba(74, 21, 75, 0.2)' },
+  { icon: SiZendesk, color: '#03363D', glow: 'rgba(3, 54, 61, 0.2)' },
+  { icon: SiSalesforce, color: '#00A1E0', glow: 'rgba(0, 161, 224, 0.2)' },
+  { icon: FaWhatsapp, color: '#25D366', glow: 'rgba(37, 211, 102, 0.2)' },
+  { icon: SiOpenai, color: '#FFFFFF', glow: 'rgba(255, 255, 255, 0.15)' },
+  { icon: SiZapier, color: '#FF4A00', glow: 'rgba(255, 74, 0, 0.2)' },
+];
+
+const bottomRowIcons = [
+  { icon: FaMeta, color: '#0081FB', glow: 'rgba(0, 129, 251, 0.2)' },
+  { icon: SiAsana, color: '#F06A6A', glow: 'rgba(240, 106, 106, 0.2)' },
+  { icon: SiRazorpay, color: '#3395FF', glow: 'rgba(51, 149, 255, 0.2)' },
+  { icon: TbBrandGoogle, color: '#8E75FF', glow: 'rgba(142, 117, 255, 0.2)' },
+  { icon: SiN8N, color: '#EA4B71', glow: 'rgba(234, 75, 113, 0.2)' },
+  { icon: FaStripe, color: '#635BFF', glow: 'rgba(99, 91, 255, 0.2)' },
+  { icon: TbBrandGoogle, color: '#4285F4', glow: 'rgba(66, 133, 244, 0.2)' },
+  { icon: SiZapier, color: '#9747FF', glow: 'rgba(151, 71, 255, 0.2)' },
+  { icon: SiSquare, color: '#FFFFFF', glow: 'rgba(255, 255, 255, 0.15)' },
+];
 export default function About() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -204,62 +231,60 @@ export default function About() {
             Seamlessly Integrate<br />Every App
           </h3>
           
-          {/* Orb and Icons Container */}
-          <div className="relative max-w-4xl mx-auto mb-12">
+          {/* Orb and Marquee Container */}
+          <div className="relative max-w-5xl mx-auto mb-12">
             {/* Central Orb */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 rounded-full opacity-80 pointer-events-none"
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 rounded-full opacity-80 pointer-events-none z-0"
               style={{
                 background: 'radial-gradient(ellipse at 30% 30%, rgba(56, 189, 248, 0.4) 0%, rgba(20, 184, 166, 0.3) 30%, rgba(249, 115, 22, 0.4) 70%, transparent 100%)',
                 filter: 'blur(40px)',
               }}
             />
             
-            {/* Icons Grid */}
-            <div className="relative z-10 grid grid-cols-5 md:grid-cols-10 gap-4 md:gap-6 justify-items-center">
-              {/* Row 1 */}
-              {[
-                { icon: '🔧', bg: 'rgba(59, 130, 246, 0.2)' },
-                { icon: '📅', bg: 'rgba(255, 255, 255, 0.1)' },
-                { icon: '🎯', bg: 'rgba(249, 115, 22, 0.2)' },
-                { icon: '💬', bg: 'rgba(16, 185, 129, 0.2)' },
-                { icon: '⚡', bg: 'rgba(99, 102, 241, 0.2)' },
-                { icon: '☁️', bg: 'rgba(56, 189, 248, 0.2)' },
-                { icon: '📞', bg: 'rgba(34, 197, 94, 0.2)' },
-                { icon: '🤖', bg: 'rgba(255, 255, 255, 0.1)' },
-                { icon: '✨', bg: 'rgba(249, 115, 22, 0.2)' },
-                { icon: '📊', bg: 'rgba(168, 85, 247, 0.2)' },
-              ].map((item, i) => (
-                <div 
-                  key={i}
-                  className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center text-xl md:text-2xl transition-transform hover:scale-110"
-                  style={{ background: item.bg, border: '1px solid rgba(255,255,255,0.1)' }}
-                >
-                  {item.icon}
+            {/* Marquee Rows */}
+            <div className="relative z-10 space-y-6 overflow-hidden py-8">
+              {/* Top Row - Moving Right */}
+              <div className="flex overflow-hidden">
+                <div className="flex animate-marquee-right gap-6">
+                  {[...topRowIcons, ...topRowIcons].map((item, i) => (
+                    <div 
+                      key={i}
+                      className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                      style={{ 
+                        background: 'rgba(20, 25, 30, 0.8)',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        boxShadow: `0 0 20px ${item.glow}`,
+                      }}
+                    >
+                      <item.icon className="w-8 h-8 md:w-10 md:h-10 transition-all group-hover:scale-110" style={{ color: item.color }} />
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
               
-              {/* Row 2 */}
-              {[
-                { icon: '🔗', bg: 'rgba(59, 130, 246, 0.2)' },
-                { icon: '📈', bg: 'rgba(236, 72, 153, 0.2)' },
-                { icon: '🎨', bg: 'rgba(99, 102, 241, 0.2)' },
-                { icon: '🔒', bg: 'rgba(16, 185, 129, 0.2)' },
-                { icon: '📧', bg: 'rgba(249, 115, 22, 0.2)' },
-                { icon: '💎', bg: 'rgba(56, 189, 248, 0.2)' },
-                { icon: '🚀', bg: 'rgba(168, 85, 247, 0.2)' },
-                { icon: '🔄', bg: 'rgba(249, 115, 22, 0.2)' },
-                { icon: '📱', bg: 'rgba(59, 130, 246, 0.2)' },
-                { icon: '🌐', bg: 'rgba(236, 72, 153, 0.2)' },
-              ].map((item, i) => (
-                <div 
-                  key={i + 10}
-                  className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center text-xl md:text-2xl transition-transform hover:scale-110"
-                  style={{ background: item.bg, border: '1px solid rgba(255,255,255,0.1)' }}
-                >
-                  {item.icon}
+              {/* Bottom Row - Moving Left */}
+              <div className="flex overflow-hidden">
+                <div className="flex animate-marquee-left gap-6">
+                  {[...bottomRowIcons, ...bottomRowIcons].map((item, i) => (
+                    <div 
+                      key={i}
+                      className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                      style={{ 
+                        background: 'rgba(20, 25, 30, 0.8)',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        boxShadow: `0 0 20px ${item.glow}`,
+                      }}
+                    >
+                      <item.icon className="w-8 h-8 md:w-10 md:h-10 transition-all group-hover:scale-110" style={{ color: item.color }} />
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
+            
+            {/* Fade edges */}
+            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-black to-transparent z-20 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-black to-transparent z-20 pointer-events-none" />
           </div>
           
           {/* Explore Button */}
