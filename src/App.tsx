@@ -4,7 +4,6 @@ import Hero from "./components/Hero";
 import Solutions from "./components/Solutions";
 import Process from "./components/Process";
 import About from "./components/About";
-import Testimonials from "./components/Testimonials";
 import CallToAction from "./components/CallToAction";
 import Footer from "./components/Footer";
 
@@ -16,7 +15,6 @@ const App: React.FC = () => {
         <Solutions />
         <Process />
         <About />
-        <Testimonials />
         <CallToAction />
         <Footer />
       </div>
