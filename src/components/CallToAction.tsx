@@ -73,7 +73,7 @@ export default function CallToAction() {
           <div className="h-1 bg-gradient-to-r from-red-500 to-red-600"></div>
           <div 
             className="calendly-inline-widget" 
-            data-url="https://calendly.com/yashglobal-ai/30min?hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=dc2626" 
+            data-url="https://calendly.com/yashglobal-ai/30min?hide_gdpr_banner=1&hide_event_type_details=0&background_color=0f1419&text_color=ffffff&primary_color=ef4444" 
             style={{ minWidth: '320px', height: '700px' }}
           ></div>
         </div>
