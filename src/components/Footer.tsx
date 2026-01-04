@@ -1,77 +1,68 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Globe } from 'lucide-react';
+import { Mail, Phone, Globe } from 'lucide-react';
+import { FaLinkedinIn } from 'react-icons/fa';
 import { useThemeStyles } from '../hooks/useThemeStyles';
 
 export default function Footer() {
-  const { theme, bgPrimary, textPrimary, textSecondary, borderColor } = useThemeStyles();
-  
-  const footerLinks = { 
-    Solutions: ['AccuLedger', 'CollectIQ', 'InsightPro', 'RelationIQ', 'RetailConnect', 'ServiceSuite'], 
-    Company: ['About Us', 'Our Team', 'Partners', 'Careers', 'Contact'],
-    Resources: ['Documentation', 'Integrations', 'Support', 'Training']
-  };
+  const { bgPrimary, textPrimary, textSecondary, borderColor } = useThemeStyles();
 
   return (
-    <footer className="relative pt-20 pb-12 px-6 transition-colors duration-300" style={{ backgroundColor: bgPrimary, borderTop: `1px solid ${borderColor}` }}>
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
-          <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">X</span>
-              </div>
-              <div>
-                <span className="text-xl font-bold" style={{ color: textPrimary }}>AUTOMATRIX</span>
-                <div className="text-xs" style={{ color: textSecondary }}>Driven by <span className="text-red-500">Intelligence</span></div>
-              </div>
-            </div>
-            <p className="mb-6 leading-relaxed" style={{ color: textSecondary }}>
-              AI-driven ERP platform designed to streamline and elevate automotive dealership management.
-            </p>
-            <div className="space-y-3">
-              <a href="tel:9542288595" className="flex items-center gap-2 text-sm hover:text-red-500 transition-colors" style={{ color: textSecondary }}>
-                <Phone className="w-4 h-4" />
-                <span>+1 (954) 228-8595</span>
-              </a>
-              <a href="mailto:info@automatrix.com" className="flex items-center gap-2 text-sm hover:text-red-500 transition-colors" style={{ color: textSecondary }}>
-                <Mail className="w-4 h-4" />
-                <span>info@automatrix.com</span>
-              </a>
-              <div className="flex items-center gap-2 text-sm" style={{ color: textSecondary }}>
-                <MapPin className="w-4 h-4" />
-                <span>21025 NW 2nd Avenue, Miami, FL 33169</span>
-              </div>
-            </div>
+    <footer className="relative pt-16 pb-8 px-6 transition-colors duration-300" style={{ backgroundColor: bgPrimary, borderTop: `1px solid ${borderColor}` }}>
+      <div className="max-w-6xl mx-auto">
+        {/* Contact Info Row */}
+        <div className="grid md:grid-cols-3 gap-8 mb-12 text-center">
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: textPrimary }}>Email Us</h4>
+            <a href="mailto:support@automatrix.agency" className="text-sm hover:text-red-500 transition-colors" style={{ color: textSecondary }}>
+              support@automatrix.agency
+            </a>
           </div>
-          
-          {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category}>
-              <h3 className="font-semibold mb-4" style={{ color: textPrimary }}>{category}</h3>
-              <ul className="space-y-3">
-                {links.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-sm transition-colors hover:text-red-500" style={{ color: textSecondary }}>{link}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: textPrimary }}>Call Us</h4>
+            <a href="tel:+919054233396" className="text-sm hover:text-red-500 transition-colors" style={{ color: textSecondary }}>
+              +91 9054233396
+            </a>
+          </div>
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: textPrimary }}>Visit Us</h4>
+            <a href="https://www.automatrix.agency" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-red-500 transition-colors" style={{ color: textSecondary }}>
+              www.automatrix.agency
+            </a>
+          </div>
         </div>
-        
-        <div className="pt-8" style={{ borderTop: `1px solid ${borderColor}` }}>
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-2 text-sm" style={{ color: textSecondary }}>
-              <Globe className="w-4 h-4" />
-              <span>Mo-Fr: 9:00am – 5:00pm EST</span>
-            </div>
-            <div className="flex gap-4 text-sm" style={{ color: textSecondary }}>
-              <a href="#" className="hover:text-red-500 transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-red-500 transition-colors">Terms of Service</a>
-            </div>
+
+        {/* Get in touch Section */}
+        <div className="text-center mb-12">
+          <h3 className="text-xl font-semibold mb-3 text-cyan-400">Get in touch</h3>
+          <p className="text-sm mb-6" style={{ color: textSecondary }}>Feel free to reach out if you have any questions or inquiries.</p>
+          <div className="flex justify-center gap-4">
+            <a 
+              href="mailto:support@automatrix.agency" 
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-opacity-80"
+              style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: textPrimary, border: `1px solid ${borderColor}` }}
+            >
+              <Mail className="w-4 h-4" />
+              Email
+            </a>
+            <a 
+              href="https://www.linkedin.com/company/automatrix" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-opacity-80"
+              style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: textPrimary, border: `1px solid ${borderColor}` }}
+            >
+              <FaLinkedinIn className="w-4 h-4" />
+              LinkedIn
+            </a>
           </div>
-          <div className="mt-8 text-center text-sm" style={{ color: theme === 'dark' ? '#64748b' : '#94a3b8' }}>
-            <p>&copy; 2025 Automatrix. Driven by Intelligence. All rights reserved.</p>
-          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="h-px mb-8" style={{ backgroundColor: borderColor }}></div>
+
+        {/* Copyright */}
+        <div className="text-center text-sm" style={{ color: textSecondary }}>
+          <p>&copy; 2026 All Rights reserved by <span className="font-semibold" style={{ color: textPrimary }}>Automatrix Agency</span></p>
         </div>
       </div>
     </footer>

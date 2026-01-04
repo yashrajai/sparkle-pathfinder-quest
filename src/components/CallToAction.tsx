@@ -1,7 +1,13 @@
-import React from 'react';
-import { Calendar, Laptop, Phone, CheckCircle2 } from 'lucide-react';
-import { useState, useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
+import { Calendar, Laptop, Phone } from 'lucide-react';
+import { useState, useRef } from 'react';
 import { useThemeStyles } from '../hooks/useThemeStyles';
+
+declare global {
+  interface Window {
+    Calendly?: any;
+  }
+}
 
 export default function CallToAction() {
   const { bgPrimary, bgSecondary, textPrimary, textSecondary, borderColor } = useThemeStyles();
@@ -15,6 +21,17 @@ export default function CallToAction() {
     }, { threshold: 0.2 }); 
     if (sectionRef.current) observer.observe(sectionRef.current); 
     return () => observer.disconnect(); 
+  }, []);
+
+  // Load Calendly script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
   }, []);
 
   const pathways = [
@@ -51,28 +68,24 @@ export default function CallToAction() {
           ))}
         </div>
         
-        <div className={`p-12 rounded-2xl text-center transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`} style={{ backgroundColor: bgSecondary, border: `1px solid ${borderColor}` }}>
+        {/* Calendly Embed */}
+        <div className={`rounded-2xl overflow-hidden transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`} style={{ backgroundColor: bgSecondary, border: `1px solid ${borderColor}` }}>
+          <div className="h-1 bg-gradient-to-r from-red-500 to-red-600"></div>
+          <div 
+            className="calendly-inline-widget" 
+            data-url="https://calendly.com/yashglobal-ai/30min?hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=dc2626" 
+            style={{ minWidth: '320px', height: '700px' }}
+          ></div>
+        </div>
+
+        {/* Get Started Today Section */}
+        <div className={`mt-16 relative p-12 rounded-2xl text-center transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`} style={{ backgroundColor: bgSecondary, border: `1px solid ${borderColor}` }}>
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-red-600 rounded-t-2xl"></div>
           <h3 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: textPrimary }}>Get Started Today</h3>
           <p className="text-lg mb-8 max-w-2xl mx-auto" style={{ color: textSecondary }}>Join dealerships nationwide using Automatrix to drive growth and efficiency</p>
-          <a href="#" className="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-red-600/30">
+          <a href="#demo" className="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-red-600/30">
             Request Demo
           </a>
-        </div>
-        
-        <div className={`mt-12 flex flex-wrap justify-center gap-8 text-sm transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="flex items-center gap-2" style={{ color: textSecondary }}>
-            <CheckCircle2 className="w-4 h-4 text-red-500" />
-            <span>No setup fees</span>
-          </div>
-          <div className="flex items-center gap-2" style={{ color: textSecondary }}>
-            <CheckCircle2 className="w-4 h-4 text-red-500" />
-            <span>Free data migration</span>
-          </div>
-          <div className="flex items-center gap-2" style={{ color: textSecondary }}>
-            <CheckCircle2 className="w-4 h-4 text-red-500" />
-            <span>Dedicated support team</span>
-          </div>
         </div>
       </div>
     </section>
