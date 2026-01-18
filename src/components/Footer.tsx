@@ -13,8 +13,8 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-8 mb-12 text-center">
           <div>
             <h4 className="font-semibold mb-2" style={{ color: textPrimary }}>Email Us</h4>
-            <a href="mailto:support@automatrix.agency" className="text-sm hover:text-red-500 transition-colors" style={{ color: textSecondary }}>
-              support@automatrix.agency
+            <a href="mailto:business@automatrix.co" className="text-sm hover:text-red-500 transition-colors" style={{ color: textSecondary }}>
+              business@automatrix.co
             </a>
           </div>
           <div>
@@ -25,8 +25,8 @@ export default function Footer() {
           </div>
           <div>
             <h4 className="font-semibold mb-2" style={{ color: textPrimary }}>Visit Us</h4>
-            <a href="https://www.automatrix.agency" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-red-500 transition-colors" style={{ color: textSecondary }}>
-              www.automatrix.agency
+            <a href="https://www.automatrix.co" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-red-500 transition-colors" style={{ color: textSecondary }}>
+              www.automatrix.co
             </a>
           </div>
         </div>
@@ -37,7 +37,7 @@ export default function Footer() {
           <p className="text-sm mb-6" style={{ color: textSecondary }}>Feel free to reach out if you have any questions or inquiries.</p>
           <div className="flex justify-center gap-4">
             <a 
-              href="mailto:support@automatrix.agency" 
+              href="mailto:business@automatrix.co" 
               className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-opacity-80"
               style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: textPrimary, border: `1px solid ${borderColor}` }}
             >
