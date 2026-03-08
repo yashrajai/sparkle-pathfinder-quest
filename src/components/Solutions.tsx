@@ -329,7 +329,7 @@ const ModulePills = ({ modules }: { modules: string[] }) => (
     {modules.map((module) => (
       <span 
         key={module}
-        className="px-3 py-1 rounded-full bg-teal-500/8 border border-teal-500/15 text-[11px] text-teal-400 font-medium tracking-wide"
+        className="px-3 py-1.5 rounded-full bg-teal-500/8 border border-teal-500/15 text-xs text-white/80 font-medium"
       >
         {module}
       </span>
@@ -375,8 +375,8 @@ const SolutionCard = ({
 
     <div className="p-7 relative z-10 flex flex-col h-full">
       {/* Title & Outcome */}
-      <h3 className="text-lg font-semibold text-white tracking-tight">{title}</h3>
-      <p className="text-sm text-gray-400 mt-1.5 leading-relaxed">{outcome}</p>
+      <h3 className="text-xl font-bold text-white tracking-tight">{title}</h3>
+      <p className="text-sm text-white/60 mt-1.5 leading-relaxed">{outcome}</p>
 
       {/* Animation Area */}
       <div className="my-3 flex-1 flex items-center">
