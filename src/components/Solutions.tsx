@@ -433,9 +433,9 @@ export default function Solutions() {
         </motion.div>
 
         {/* Row 1: 3 equal cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
           {solutions.map((solution, i) => (
-            <SolutionCard key={solution.title} {...solution} delay={i * 0.1} />
+            <SolutionCard key={solution.title} {...solution} delay={i * 0.08} />
           ))}
         </div>
 
