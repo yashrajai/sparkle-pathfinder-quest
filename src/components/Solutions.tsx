@@ -85,53 +85,46 @@ const RealEstateAnimation = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-60 flex items-center justify-center">
+    <div className="relative w-full h-44 flex items-center justify-center">
       {/* Central property node */}
-      <motion.div 
-        className="w-16 h-16 rounded-xl bg-gradient-to-br from-teal-500/15 to-emerald-500/15 border border-teal-500/30 flex items-center justify-center z-10"
-        animate={{ boxShadow: ['0 0 15px rgba(20, 184, 166, 0.15)', '0 0 25px rgba(20, 184, 166, 0.3)', '0 0 15px rgba(20, 184, 166, 0.15)'] }}
-        transition={{ duration: 2.5, repeat: Infinity }}
-      >
-        <span className="text-xl">🏠</span>
-      </motion.div>
+      <div className="w-12 h-12 rounded-lg bg-teal-500/10 border border-teal-500/20 flex items-center justify-center z-10">
+        <span className="text-lg">🏠</span>
+      </div>
 
       {/* Agent nodes in a circle */}
       {agents.map((agent, i) => {
         const angle = (i * 72 - 90) * (Math.PI / 180);
-        const radius = 100;
+        const radius = 80;
         const x = Math.cos(angle) * radius;
-        const y = Math.sin(angle) * (radius * 0.82);
+        const y = Math.sin(angle) * (radius * 0.8);
         const isActive = i === activeAgent;
 
         return (
           <React.Fragment key={agent.label}>
-            {/* Connection line */}
             <svg className="absolute pointer-events-none" style={{ left: '50%', top: '50%', overflow: 'visible' }}>
               <line
                 x1="0" y1="0" x2={x} y2={y}
-                stroke={isActive ? 'rgba(20, 184, 166, 0.5)' : 'rgba(20, 184, 166, 0.1)'}
-                strokeWidth={isActive ? 1.5 : 1}
+                stroke={isActive ? 'rgba(20, 184, 166, 0.35)' : 'rgba(255, 255, 255, 0.04)'}
+                strokeWidth={1}
                 strokeDasharray={isActive ? "0" : "3 3"}
               />
             </svg>
             
-            <motion.div
-              className="absolute flex flex-col items-center gap-1.5"
-              style={{ left: `calc(50% + ${x}px - 20px)`, top: `calc(50% + ${y}px - 20px)` }}
+            <div
+              className="absolute flex flex-col items-center gap-1"
+              style={{ left: `calc(50% + ${x}px - 18px)`, top: `calc(50% + ${y}px - 18px)` }}
             >
-              <motion.div 
-                className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors duration-300 ${
+              <div 
+                className={`w-9 h-9 rounded-md flex items-center justify-center transition-all duration-500 ${
                   isActive 
-                    ? 'bg-gradient-to-br from-teal-500 to-emerald-500 shadow-md shadow-teal-500/25' 
-                    : 'bg-[#0d1a1a] border border-gray-700/50'
+                    ? 'bg-teal-500/20 border border-teal-500/40' 
+                    : 'bg-white/[0.03] border border-white/[0.06]'
                 }`}
-                animate={isActive ? { scale: [1, 1.1, 1] } : { scale: 1 }}
-                transition={{ duration: 0.4 }}
               >
-                <agent.icon className={`w-4.5 h-4.5 ${isActive ? 'text-white' : 'text-gray-500'}`} />
-              </motion.div>
-              <span className={`text-[10px] font-medium ${isActive ? 'text-teal-400' : 'text-gray-600'}`}>{agent.label}</span>
-            </motion.div>
+                <agent.icon className={`w-4 h-4 ${isActive ? 'text-teal-400' : 'text-white/25'}`} />
+              </div>
+              <span className={`text-[9px] font-medium transition-colors duration-500 ${isActive ? 'text-teal-400/80' : 'text-white/30'}`}>{agent.label}</span>
+            </div>
           </React.Fragment>
         );
       })}
