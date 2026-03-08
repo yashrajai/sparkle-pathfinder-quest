@@ -124,10 +124,10 @@ const RealEstateAnimation = () => {
             
             <motion.div
               className="absolute flex flex-col items-center gap-1.5"
-              style={{ left: `calc(50% + ${x}px - 18px)`, top: `calc(50% + ${y}px - 18px)` }}
+              style={{ left: `calc(50% + ${x}px - 20px)`, top: `calc(50% + ${y}px - 20px)` }}
             >
               <motion.div 
-                className={`w-9 h-9 rounded-lg flex items-center justify-center transition-colors duration-300 ${
+                className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors duration-300 ${
                   isActive 
                     ? 'bg-gradient-to-br from-teal-500 to-emerald-500 shadow-md shadow-teal-500/25' 
                     : 'bg-[#0d1a1a] border border-gray-700/50'
@@ -135,9 +135,9 @@ const RealEstateAnimation = () => {
                 animate={isActive ? { scale: [1, 1.1, 1] } : { scale: 1 }}
                 transition={{ duration: 0.4 }}
               >
-                <agent.icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-gray-500'}`} />
+                <agent.icon className={`w-4.5 h-4.5 ${isActive ? 'text-white' : 'text-gray-500'}`} />
               </motion.div>
-              <span className={`text-[9px] font-medium ${isActive ? 'text-teal-400' : 'text-gray-600'}`}>{agent.label}</span>
+              <span className={`text-[10px] font-medium ${isActive ? 'text-teal-400' : 'text-gray-600'}`}>{agent.label}</span>
             </motion.div>
           </React.Fragment>
         );
