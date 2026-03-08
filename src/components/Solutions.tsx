@@ -329,7 +329,7 @@ const ModulePills = ({ modules }: { modules: string[] }) => (
     {modules.map((module) => (
       <span 
         key={module}
-        className="px-3 py-1 rounded-full bg-teal-500/8 border border-teal-500/15 text-[11px] text-teal-400 font-medium tracking-wide"
+        className="px-3 py-1.5 rounded-full bg-teal-500/8 border border-teal-500/15 text-xs text-white/80 font-medium"
       >
         {module}
       </span>
