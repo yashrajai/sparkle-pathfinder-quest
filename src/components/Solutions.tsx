@@ -22,42 +22,44 @@ const LeadGenAnimation = () => {
   ];
 
   return (
-    <div className="relative w-full h-32 flex flex-col items-center justify-center px-2">
+    <div className="relative w-full h-48 flex flex-col items-center justify-center px-4">
       {/* Lead counter */}
       <motion.div 
-        className="absolute top-2 right-2 px-2.5 py-1 rounded-md bg-teal-500/8 border border-teal-500/20"
+        className="absolute top-4 right-4 px-3 py-1.5 rounded-lg bg-teal-500/10 border border-teal-500/25"
         key={leadCount}
-        initial={{ opacity: 0.7 }}
-        animate={{ opacity: 1 }}
+        initial={{ scale: 1.03, opacity: 0.8 }}
+        animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.3 }}
       >
-        <span className="text-[11px] text-teal-400/80 font-mono">+{leadCount} leads</span>
+        <span className="text-sm text-teal-400 font-mono font-medium">+{leadCount} leads</span>
       </motion.div>
 
       {/* Flow path */}
-      <div className="relative w-full mt-3">
-        <svg className="absolute inset-x-0 top-[14px] w-full h-[2px]" preserveAspectRatio="none" viewBox="0 0 400 2">
-          <line x1="40" y1="1" x2="360" y2="1" stroke="rgba(20, 184, 166, 0.12)" strokeWidth="1.5" />
+      <div className="relative w-full mt-6">
+        <svg className="absolute inset-x-0 top-[22px] w-full h-[3px]" preserveAspectRatio="none" viewBox="0 0 400 3">
+          <line x1="40" y1="1.5" x2="360" y2="1.5" stroke="rgba(20, 184, 166, 0.15)" strokeWidth="2" />
           <motion.circle
-            r="3" fill="rgba(20, 184, 166, 0.6)"
+            r="4" fill="rgba(20, 184, 166, 0.7)"
             animate={{ cx: [40, 360] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
           />
         </svg>
 
         <div className="flex items-start justify-between w-full relative z-10">
           {nodes.map((node) => (
-            <div key={node.label} className="flex flex-col items-center gap-1.5 w-14">
-              <div 
-                className={`w-7 h-7 rounded-md flex items-center justify-center ${
+            <div key={node.label} className="flex flex-col items-center gap-2 w-16">
+              <motion.div 
+                className={`w-11 h-11 rounded-lg flex items-center justify-center ${
                   node.highlight 
-                    ? 'bg-teal-500/20 border border-teal-500/40' 
-                    : 'bg-white/[0.03] border border-white/[0.06]'
+                    ? 'bg-gradient-to-br from-teal-500 to-emerald-500 shadow-lg shadow-teal-500/20' 
+                    : 'bg-[#0d1a1a] border border-teal-500/20'
                 }`}
+                animate={node.highlight ? { scale: [1, 1.04, 1] } : {}}
+                transition={{ duration: 3, repeat: Infinity }}
               >
-                <node.icon className={`w-3.5 h-3.5 ${node.highlight ? 'text-teal-400' : 'text-white/30'}`} />
-              </div>
-              <span className="text-[9px] text-white/40 font-medium text-center leading-tight">{node.label}</span>
+                <node.icon className={`w-5 h-5 ${node.highlight ? 'text-white' : 'text-teal-400/70'}`} />
+              </motion.div>
+              <span className="text-xs text-white/50 font-medium text-center leading-tight">{node.label}</span>
             </div>
           ))}
         </div>
@@ -85,18 +87,22 @@ const RealEstateAnimation = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-44 flex items-center justify-center">
+    <div className="relative w-full h-56 flex items-center justify-center">
       {/* Central property node */}
-      <div className="w-12 h-12 rounded-lg bg-teal-500/10 border border-teal-500/20 flex items-center justify-center z-10">
-        <span className="text-lg">🏠</span>
-      </div>
+      <motion.div 
+        className="w-16 h-16 rounded-xl bg-gradient-to-br from-teal-500/15 to-emerald-500/15 border border-teal-500/30 flex items-center justify-center z-10"
+        animate={{ boxShadow: ['0 0 15px rgba(20, 184, 166, 0.1)', '0 0 25px rgba(20, 184, 166, 0.2)', '0 0 15px rgba(20, 184, 166, 0.1)'] }}
+        transition={{ duration: 3, repeat: Infinity }}
+      >
+        <span className="text-2xl">🏠</span>
+      </motion.div>
 
       {/* Agent nodes in a circle */}
       {agents.map((agent, i) => {
         const angle = (i * 72 - 90) * (Math.PI / 180);
-        const radius = 80;
+        const radius = 95;
         const x = Math.cos(angle) * radius;
-        const y = Math.sin(angle) * (radius * 0.8);
+        const y = Math.sin(angle) * (radius * 0.82);
         const isActive = i === activeAgent;
 
         return (
@@ -104,26 +110,28 @@ const RealEstateAnimation = () => {
             <svg className="absolute pointer-events-none" style={{ left: '50%', top: '50%', overflow: 'visible' }}>
               <line
                 x1="0" y1="0" x2={x} y2={y}
-                stroke={isActive ? 'rgba(20, 184, 166, 0.35)' : 'rgba(255, 255, 255, 0.04)'}
-                strokeWidth={1}
+                stroke={isActive ? 'rgba(20, 184, 166, 0.4)' : 'rgba(20, 184, 166, 0.08)'}
+                strokeWidth={isActive ? 1.5 : 1}
                 strokeDasharray={isActive ? "0" : "3 3"}
               />
             </svg>
             
             <div
-              className="absolute flex flex-col items-center gap-1"
-              style={{ left: `calc(50% + ${x}px - 18px)`, top: `calc(50% + ${y}px - 18px)` }}
+              className="absolute flex flex-col items-center gap-1.5"
+              style={{ left: `calc(50% + ${x}px - 22px)`, top: `calc(50% + ${y}px - 22px)` }}
             >
-              <div 
-                className={`w-9 h-9 rounded-md flex items-center justify-center transition-all duration-500 ${
+              <motion.div 
+                className={`w-11 h-11 rounded-lg flex items-center justify-center transition-colors duration-300 ${
                   isActive 
-                    ? 'bg-teal-500/20 border border-teal-500/40' 
-                    : 'bg-white/[0.03] border border-white/[0.06]'
+                    ? 'bg-gradient-to-br from-teal-500 to-emerald-500 shadow-lg shadow-teal-500/25' 
+                    : 'bg-[#0d1a1a] border border-white/[0.08]'
                 }`}
+                animate={isActive ? { scale: [1, 1.08, 1] } : { scale: 1 }}
+                transition={{ duration: 0.4 }}
               >
-                <agent.icon className={`w-4 h-4 ${isActive ? 'text-teal-400' : 'text-white/25'}`} />
-              </div>
-              <span className={`text-[9px] font-medium transition-colors duration-500 ${isActive ? 'text-teal-400/80' : 'text-white/30'}`}>{agent.label}</span>
+                <agent.icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-white/40'}`} />
+              </motion.div>
+              <span className={`text-[11px] font-medium ${isActive ? 'text-teal-400' : 'text-white/40'}`}>{agent.label}</span>
             </div>
           </React.Fragment>
         );
@@ -151,38 +159,48 @@ const EcommerceAnimation = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-36 flex flex-col items-center justify-center gap-4 px-1">
+    <div className="relative w-full h-48 flex flex-col items-center justify-center gap-5 px-2">
       {/* Main flow */}
-      <div className="flex items-center justify-between w-full gap-1">
+      <div className="flex items-center justify-between w-full gap-1.5">
         {stages.map((stage, i) => (
           <React.Fragment key={stage.label}>
-            <div 
-              className={`flex-1 h-14 rounded-md flex flex-col items-center justify-center gap-1 transition-all duration-500 ${
+            <motion.div 
+              className={`flex-1 h-16 rounded-lg flex flex-col items-center justify-center gap-1.5 transition-colors duration-300 ${
                 i <= activeStage 
-                  ? 'bg-teal-500/8 border border-teal-500/25' 
-                  : 'bg-white/[0.02] border border-white/[0.05]'
+                  ? 'bg-teal-500/10 border border-teal-500/30' 
+                  : 'bg-[#0d1a1a] border border-white/[0.06]'
               }`}
+              animate={i === activeStage ? { scale: [1, 1.04, 1] } : {}}
+              transition={{ duration: 0.5 }}
             >
-              <stage.icon className={`w-4 h-4 transition-colors duration-500 ${i <= activeStage ? 'text-teal-400' : 'text-white/20'}`} />
-              <span className={`text-[9px] font-medium transition-colors duration-500 ${i <= activeStage ? 'text-teal-400/80' : 'text-white/30'}`}>{stage.label}</span>
-            </div>
+              <stage.icon className={`w-5 h-5 ${i <= activeStage ? 'text-teal-400' : 'text-white/25'}`} />
+              <span className={`text-[10px] font-medium ${i <= activeStage ? 'text-teal-400' : 'text-white/35'}`}>{stage.label}</span>
+            </motion.div>
             {i < stages.length - 1 && (
-              <div className={`w-3 h-px flex-shrink-0 transition-colors duration-500 ${i < activeStage ? 'bg-teal-500/30' : 'bg-white/[0.06]'}`} />
+              <div className={`w-4 h-px flex-shrink-0 ${i < activeStage ? 'bg-teal-500/40' : 'bg-white/[0.06]'} transition-colors duration-300`} />
             )}
           </React.Fragment>
         ))}
       </div>
 
       {/* Auto-reply indicators */}
-      <div className="flex items-center gap-2.5">
-        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/[0.02] border border-white/[0.06]">
-          <MessageSquare className="w-3 h-3 text-teal-400/60" />
-          <span className="text-[10px] text-white/40 font-medium">Auto-reply</span>
-        </div>
-        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/[0.02] border border-white/[0.06]">
-          <Instagram className="w-3 h-3 text-teal-400/60" />
-          <span className="text-[10px] text-white/40 font-medium">DM Bot</span>
-        </div>
+      <div className="flex items-center gap-3">
+        <motion.div 
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0d1a1a] border border-white/[0.08]"
+          animate={{ opacity: [0.6, 1, 0.6] }}
+          transition={{ duration: 3, repeat: Infinity }}
+        >
+          <MessageSquare className="w-3.5 h-3.5 text-teal-400" />
+          <span className="text-[11px] text-white/50 font-medium">Auto-reply</span>
+        </motion.div>
+        <motion.div 
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0d1a1a] border border-white/[0.08]"
+          animate={{ opacity: [1, 0.6, 1] }}
+          transition={{ duration: 3, repeat: Infinity }}
+        >
+          <Instagram className="w-3.5 h-3.5 text-teal-400" />
+          <span className="text-[11px] text-white/50 font-medium">DM Bot</span>
+        </motion.div>
       </div>
     </div>
   );
@@ -200,37 +218,47 @@ const SaaSAnimation = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-28 flex items-center justify-center gap-6">
+    <div className="relative w-full h-36 flex items-center justify-center gap-8">
       {/* Wireframe */}
-      <div className="w-28 h-20 rounded-md bg-white/[0.02] border border-white/[0.06] p-2.5 relative overflow-hidden">
-        <div className="space-y-1.5">
-          <div className="h-1 w-3/4 bg-white/[0.06] rounded-full" />
-          <div className="h-1 w-1/2 bg-white/[0.06] rounded-full" />
-          <div className="flex gap-1 mt-2">
-            <div className="h-5 flex-1 bg-white/[0.03] rounded" />
-            <div className="h-5 flex-1 bg-white/[0.03] rounded" />
+      <motion.div 
+        className="w-36 h-24 rounded-lg bg-[#0d1a1a] border border-teal-500/20 p-3 relative overflow-hidden"
+        animate={{ borderColor: ['rgba(20, 184, 166, 0.2)', 'rgba(20, 184, 166, 0.4)', 'rgba(20, 184, 166, 0.2)'] }}
+        transition={{ duration: 3, repeat: Infinity }}
+      >
+        <div className="space-y-2">
+          <div className="h-1.5 w-3/4 bg-teal-500/15 rounded-full" />
+          <div className="h-1.5 w-1/2 bg-teal-500/15 rounded-full" />
+          <div className="flex gap-1.5 mt-3">
+            <div className="h-8 flex-1 bg-teal-500/8 rounded" />
+            <div className="h-8 flex-1 bg-teal-500/8 rounded" />
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      <ArrowRight className="w-3.5 h-3.5 text-white/15 flex-shrink-0" />
+      <ArrowRight className="w-5 h-5 text-teal-500/40 flex-shrink-0" />
 
       {/* API nodes */}
-      <div className="flex flex-col gap-1.5">
+      <div className="flex flex-col gap-2">
         {['API', 'DB', 'Auth'].map((node, i) => (
-          <div
+          <motion.div
             key={node}
-            className="px-3.5 py-1 rounded-md bg-white/[0.02] border border-teal-500/15 text-[10px] text-teal-400/70 font-mono font-medium text-center"
+            className="px-5 py-2 rounded-lg bg-[#0d1a1a] border border-teal-500/20 text-sm text-teal-400 font-mono font-medium text-center"
+            animate={{ x: [0, 2, 0] }}
+            transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
           >
             {node}
-          </div>
+          </motion.div>
         ))}
       </div>
 
       {/* Deploy status */}
-      <div className="absolute bottom-2 right-3 px-2.5 py-1 rounded-md bg-teal-500/6 border border-teal-500/15">
-        <span className="text-[10px] text-teal-400/60 font-mono">{deployText}</span>
-      </div>
+      <motion.div 
+        className="absolute bottom-3 right-4 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20"
+        animate={{ opacity: [0.6, 1, 0.6] }}
+        transition={{ duration: 1.5, repeat: Infinity }}
+      >
+        <span className="text-xs text-emerald-400 font-mono font-medium">{deployText}</span>
+      </motion.div>
     </div>
   );
 };
@@ -249,28 +277,35 @@ const ConsultationAnimation = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-28 flex items-center justify-center gap-6">
+    <div className="relative w-full h-36 flex items-center justify-center gap-8">
       {/* Business diagram */}
-      <div className="w-12 h-12 rounded-lg bg-white/[0.03] border border-white/[0.06] flex items-center justify-center">
-        <BarChart3 className="w-5 h-5 text-white/25" />
+      <div className="relative flex-shrink-0">
+        <div className="w-16 h-16 rounded-xl bg-[#0d1a1a] border border-white/[0.08] flex items-center justify-center">
+          <BarChart3 className="w-6 h-6 text-white/40" />
+        </div>
+        <motion.div 
+          className="absolute inset-0 rounded-xl border-2 border-teal-500/30"
+          animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.7, 0.3] }}
+          transition={{ duration: 3, repeat: Infinity }}
+        />
       </div>
 
-      <ArrowRight className="w-3.5 h-3.5 text-white/15 flex-shrink-0" />
+      <ArrowRight className="w-5 h-5 text-teal-500/40 flex-shrink-0" />
 
       {/* Optimized system */}
-      <div className="w-12 h-12 rounded-lg bg-teal-500/10 border border-teal-500/20 flex items-center justify-center">
-        <Zap className="w-5 h-5 text-teal-400/70" />
+      <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-teal-500/15 to-emerald-500/15 border border-teal-500/30 flex items-center justify-center flex-shrink-0">
+        <Zap className="w-6 h-6 text-teal-400" />
       </div>
 
-      <ArrowRight className="w-3.5 h-3.5 text-white/15 flex-shrink-0" />
+      <ArrowRight className="w-5 h-5 text-teal-500/40 flex-shrink-0" />
 
       {/* Metrics */}
-      <div className="flex flex-col gap-2">
-        <div className="px-3 py-1.5 rounded-md bg-teal-500/6 border border-teal-500/12">
-          <span className="text-[11px] text-teal-400/70 font-mono">Efficiency: {efficiency}%</span>
+      <div className="flex flex-col gap-2.5">
+        <div className="px-5 py-2.5 rounded-lg bg-teal-500/8 border border-teal-500/15">
+          <span className="text-sm text-teal-400 font-mono font-medium">Efficiency: {efficiency}%</span>
         </div>
-        <div className="px-3 py-1.5 rounded-md bg-teal-500/6 border border-teal-500/12">
-          <span className="text-[11px] text-teal-400/70 font-mono">Cost: -{cost}%</span>
+        <div className="px-5 py-2.5 rounded-lg bg-emerald-500/8 border border-emerald-500/15">
+          <span className="text-sm text-emerald-400 font-mono font-medium">Cost: -{cost}%</span>
         </div>
       </div>
     </div>
@@ -279,11 +314,11 @@ const ConsultationAnimation = () => {
 
 // Module Pills Component
 const ModulePills = ({ modules }: { modules: string[] }) => (
-  <div className="flex flex-wrap gap-1.5 mt-4">
+  <div className="flex flex-wrap gap-2 mt-5">
     {modules.map((module) => (
       <span 
         key={module}
-        className="px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.07] text-[11px] text-white/60 font-medium"
+        className="px-3 py-1.5 rounded-full bg-teal-500/8 border border-teal-500/15 text-sm text-white/70 font-medium"
       >
         {module}
       </span>
@@ -308,23 +343,29 @@ const SolutionCard = ({
   delay?: number;
 }) => (
   <motion.div
-    className="group relative rounded-xl overflow-hidden"
+    className="group relative rounded-2xl overflow-hidden"
     style={{ 
-      background: 'linear-gradient(160deg, rgba(12, 18, 18, 0.95) 0%, rgba(8, 12, 12, 0.98) 100%)',
-      border: '1px solid rgba(255, 255, 255, 0.06)'
+      background: 'linear-gradient(145deg, rgba(10, 20, 20, 0.95) 0%, rgba(6, 12, 12, 0.98) 100%)',
+      border: '1px solid rgba(20, 184, 166, 0.12)'
     }}
-    initial={{ opacity: 0, y: 16 }}
+    initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.5, delay }}
     whileHover={{ 
-      borderColor: 'rgba(20, 184, 166, 0.2)',
+      borderColor: 'rgba(20, 184, 166, 0.3)',
+      boxShadow: '0 0 40px rgba(20, 184, 166, 0.06)'
     }}
   >
-    <div className="p-6 lg:p-7 relative z-10 flex flex-col h-full">
+    {/* Hover glow */}
+    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+      <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-transparent" />
+    </div>
+
+    <div className="p-8 relative z-10 flex flex-col h-full">
       {/* Title & Outcome */}
-      <h3 className="text-lg font-semibold text-white tracking-tight">{title}</h3>
-      <p className="text-[13px] text-white/45 mt-1 leading-relaxed">{outcome}</p>
+      <h3 className="text-xl font-bold text-white tracking-tight">{title}</h3>
+      <p className="text-sm text-white/55 mt-2 leading-relaxed">{outcome}</p>
 
       {/* Animation Area */}
       <div className="my-4 flex-1 flex items-center">
@@ -339,12 +380,12 @@ const SolutionCard = ({
       {/* CTA */}
       <motion.a 
         href="#book-call"
-        className="inline-flex items-center gap-1.5 mt-4 text-[13px] text-teal-400/80 font-medium"
-        whileHover={{ x: 3 }}
+        className="inline-flex items-center gap-2 mt-5 text-sm text-teal-400 font-semibold"
+        whileHover={{ x: 4 }}
         transition={{ duration: 0.2 }}
       >
         <span>{cta}</span>
-        <ArrowRight className="w-3 h-3" />
+        <ArrowRight className="w-4 h-4" />
       </motion.a>
     </div>
   </motion.div>
@@ -415,7 +456,7 @@ export default function Solutions() {
         style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, transparent 70%)', filter: 'blur(120px)' }}
       />
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <motion.div 
           className="text-center mb-16"
@@ -427,22 +468,22 @@ export default function Solutions() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
             Our Core AI Infrastructure Systems
           </h2>
-          <p className="text-gray-400 text-lg max-w-lg mx-auto">
+          <p className="text-white/50 text-lg max-w-lg mx-auto">
             End-to-end AI systems built to replace teams, not tools.
           </p>
         </motion.div>
 
         {/* Row 1: 3 equal cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-5">
           {solutions.map((solution, i) => (
-            <SolutionCard key={solution.title} {...solution} delay={i * 0.08} />
+            <SolutionCard key={solution.title} {...solution} delay={i * 0.1} />
           ))}
         </div>
 
         {/* Row 2: 2 wide cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           {wideSolutions.map((solution, i) => (
-            <SolutionCard key={solution.title} {...solution} delay={0.25 + i * 0.08} />
+            <SolutionCard key={solution.title} {...solution} delay={0.3 + i * 0.1} />
           ))}
         </div>
       </div>
