@@ -165,13 +165,13 @@ const EcommerceAnimation = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-44 flex flex-col items-center justify-center gap-5 px-2">
+    <div className="relative w-full h-52 flex flex-col items-center justify-center gap-5 px-1">
       {/* Main flow */}
-      <div className="flex items-center gap-1.5">
+      <div className="flex items-center justify-between w-full gap-1">
         {stages.map((stage, i) => (
           <React.Fragment key={stage.label}>
             <motion.div 
-              className={`w-14 h-14 rounded-lg flex flex-col items-center justify-center gap-1 transition-colors duration-300 ${
+              className={`flex-1 h-16 rounded-lg flex flex-col items-center justify-center gap-1.5 transition-colors duration-300 ${
                 i <= activeStage 
                   ? 'bg-teal-500/10 border border-teal-500/35' 
                   : 'bg-[#0d1a1a] border border-gray-700/30'
@@ -179,11 +179,11 @@ const EcommerceAnimation = () => {
               animate={i === activeStage ? { scale: [1, 1.06, 1] } : {}}
               transition={{ duration: 0.5 }}
             >
-              <stage.icon className={`w-4.5 h-4.5 ${i <= activeStage ? 'text-teal-400' : 'text-gray-600'}`} />
-              <span className={`text-[8px] font-medium ${i <= activeStage ? 'text-teal-400' : 'text-gray-600'}`}>{stage.label}</span>
+              <stage.icon className={`w-5 h-5 ${i <= activeStage ? 'text-teal-400' : 'text-gray-600'}`} />
+              <span className={`text-[9px] font-medium ${i <= activeStage ? 'text-teal-400' : 'text-gray-600'}`}>{stage.label}</span>
             </motion.div>
             {i < stages.length - 1 && (
-              <div className={`w-3 h-px ${i < activeStage ? 'bg-teal-500/50' : 'bg-gray-700/40'} transition-colors duration-300`} />
+              <div className={`w-4 h-px flex-shrink-0 ${i < activeStage ? 'bg-teal-500/50' : 'bg-gray-700/40'} transition-colors duration-300`} />
             )}
           </React.Fragment>
         ))}
