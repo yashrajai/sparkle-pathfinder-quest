@@ -440,9 +440,9 @@ export default function Solutions() {
         </div>
 
         {/* Row 2: 2 wide cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {wideSolutions.map((solution, i) => (
-            <SolutionCard key={solution.title} {...solution} delay={0.3 + i * 0.1} />
+            <SolutionCard key={solution.title} {...solution} delay={0.25 + i * 0.08} />
           ))}
         </div>
       </div>
