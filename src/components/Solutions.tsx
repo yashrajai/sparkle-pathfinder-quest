@@ -92,22 +92,22 @@ const RealEstateAnimation = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-52 flex items-center justify-center">
+    <div className="relative w-full h-60 flex items-center justify-center">
       {/* Central property node */}
       <motion.div 
-        className="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-500/15 to-emerald-500/15 border border-teal-500/30 flex items-center justify-center z-10"
+        className="w-16 h-16 rounded-xl bg-gradient-to-br from-teal-500/15 to-emerald-500/15 border border-teal-500/30 flex items-center justify-center z-10"
         animate={{ boxShadow: ['0 0 15px rgba(20, 184, 166, 0.15)', '0 0 25px rgba(20, 184, 166, 0.3)', '0 0 15px rgba(20, 184, 166, 0.15)'] }}
         transition={{ duration: 2.5, repeat: Infinity }}
       >
-        <span className="text-lg">🏠</span>
+        <span className="text-xl">🏠</span>
       </motion.div>
 
       {/* Agent nodes in a circle */}
       {agents.map((agent, i) => {
         const angle = (i * 72 - 90) * (Math.PI / 180);
-        const radius = 85;
+        const radius = 100;
         const x = Math.cos(angle) * radius;
-        const y = Math.sin(angle) * (radius * 0.8);
+        const y = Math.sin(angle) * (radius * 0.82);
         const isActive = i === activeAgent;
 
         return (
