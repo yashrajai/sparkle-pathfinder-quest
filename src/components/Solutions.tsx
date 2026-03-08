@@ -279,11 +279,11 @@ const ConsultationAnimation = () => {
 
 // Module Pills Component
 const ModulePills = ({ modules }: { modules: string[] }) => (
-  <div className="flex flex-wrap gap-2 mt-5">
+  <div className="flex flex-wrap gap-1.5 mt-4">
     {modules.map((module) => (
       <span 
         key={module}
-        className="px-3 py-1.5 rounded-full bg-teal-500/8 border border-teal-500/15 text-xs text-white/80 font-medium"
+        className="px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.07] text-[11px] text-white/60 font-medium"
       >
         {module}
       </span>
