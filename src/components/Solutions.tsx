@@ -200,52 +200,37 @@ const SaaSAnimation = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-36 flex items-center justify-center gap-8">
+    <div className="relative w-full h-28 flex items-center justify-center gap-6">
       {/* Wireframe */}
-      <motion.div 
-        className="w-32 h-22 rounded-lg bg-[#0d1a1a] border border-teal-500/20 p-3 relative overflow-hidden"
-        animate={{ borderColor: ['rgba(20, 184, 166, 0.2)', 'rgba(20, 184, 166, 0.45)', 'rgba(20, 184, 166, 0.2)'] }}
-        transition={{ duration: 3, repeat: Infinity }}
-      >
-        <div className="space-y-2">
-          <div className="h-1.5 w-3/4 bg-teal-500/15 rounded-full" />
-          <div className="h-1.5 w-1/2 bg-teal-500/15 rounded-full" />
-          <div className="flex gap-1.5 mt-3">
-            <div className="h-7 flex-1 bg-teal-500/8 rounded" />
-            <div className="h-7 flex-1 bg-teal-500/8 rounded" />
+      <div className="w-28 h-20 rounded-md bg-white/[0.02] border border-white/[0.06] p-2.5 relative overflow-hidden">
+        <div className="space-y-1.5">
+          <div className="h-1 w-3/4 bg-white/[0.06] rounded-full" />
+          <div className="h-1 w-1/2 bg-white/[0.06] rounded-full" />
+          <div className="flex gap-1 mt-2">
+            <div className="h-5 flex-1 bg-white/[0.03] rounded" />
+            <div className="h-5 flex-1 bg-white/[0.03] rounded" />
           </div>
         </div>
-        <motion.div 
-          className="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-emerald-500/5 rounded-lg"
-          animate={{ opacity: [0, 0.6, 0] }}
-          transition={{ duration: 3, repeat: Infinity }}
-        />
-      </motion.div>
+      </div>
 
-      <ArrowRight className="w-4 h-4 text-teal-500/40 flex-shrink-0" />
+      <ArrowRight className="w-3.5 h-3.5 text-white/15 flex-shrink-0" />
 
       {/* API nodes */}
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-1.5">
         {['API', 'DB', 'Auth'].map((node, i) => (
-          <motion.div
+          <div
             key={node}
-            className="px-4 py-1.5 rounded-md bg-[#0d1a1a] border border-teal-500/20 text-[11px] text-teal-400 font-mono font-medium text-center"
-            animate={{ x: [0, 2, 0] }}
-            transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
+            className="px-3.5 py-1 rounded-md bg-white/[0.02] border border-teal-500/15 text-[10px] text-teal-400/70 font-mono font-medium text-center"
           >
             {node}
-          </motion.div>
+          </div>
         ))}
       </div>
 
       {/* Deploy status */}
-      <motion.div 
-        className="absolute bottom-3 right-4 px-3 py-1.5 rounded-md bg-emerald-500/10 border border-emerald-500/20"
-        animate={{ opacity: [0.6, 1, 0.6] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
-      >
-        <span className="text-[10px] text-emerald-400 font-mono font-medium">{deployText}</span>
-      </motion.div>
+      <div className="absolute bottom-2 right-3 px-2.5 py-1 rounded-md bg-teal-500/6 border border-teal-500/15">
+        <span className="text-[10px] text-teal-400/60 font-mono">{deployText}</span>
+      </div>
     </div>
   );
 };
