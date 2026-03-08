@@ -308,32 +308,26 @@ const SolutionCard = ({
   delay?: number;
 }) => (
   <motion.div
-    className="group relative rounded-2xl overflow-hidden"
+    className="group relative rounded-xl overflow-hidden"
     style={{ 
-      background: 'linear-gradient(145deg, rgba(10, 20, 20, 0.95) 0%, rgba(6, 12, 12, 0.98) 100%)',
-      border: '1px solid rgba(20, 184, 166, 0.12)'
+      background: 'linear-gradient(160deg, rgba(12, 18, 18, 0.95) 0%, rgba(8, 12, 12, 0.98) 100%)',
+      border: '1px solid rgba(255, 255, 255, 0.06)'
     }}
-    initial={{ opacity: 0, y: 20 }}
+    initial={{ opacity: 0, y: 16 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.5, delay }}
     whileHover={{ 
-      borderColor: 'rgba(20, 184, 166, 0.35)',
-      boxShadow: '0 0 50px rgba(20, 184, 166, 0.08)'
+      borderColor: 'rgba(20, 184, 166, 0.2)',
     }}
   >
-    {/* Hover glow */}
-    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-transparent" />
-    </div>
-
-    <div className="p-7 relative z-10 flex flex-col h-full">
+    <div className="p-6 lg:p-7 relative z-10 flex flex-col h-full">
       {/* Title & Outcome */}
-      <h3 className="text-xl font-bold text-white tracking-tight">{title}</h3>
-      <p className="text-sm text-white/60 mt-1.5 leading-relaxed">{outcome}</p>
+      <h3 className="text-lg font-semibold text-white tracking-tight">{title}</h3>
+      <p className="text-[13px] text-white/45 mt-1 leading-relaxed">{outcome}</p>
 
       {/* Animation Area */}
-      <div className="my-3 flex-1 flex items-center">
+      <div className="my-4 flex-1 flex items-center">
         <div className="w-full">
           <Animation />
         </div>
@@ -345,12 +339,12 @@ const SolutionCard = ({
       {/* CTA */}
       <motion.a 
         href="#book-call"
-        className="inline-flex items-center gap-2 mt-5 text-sm text-teal-400 font-medium"
-        whileHover={{ x: 4 }}
+        className="inline-flex items-center gap-1.5 mt-4 text-[13px] text-teal-400/80 font-medium"
+        whileHover={{ x: 3 }}
         transition={{ duration: 0.2 }}
       >
         <span>{cta}</span>
-        <ArrowRight className="w-3.5 h-3.5" />
+        <ArrowRight className="w-3 h-3" />
       </motion.a>
     </div>
   </motion.div>
