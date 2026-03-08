@@ -249,35 +249,28 @@ const ConsultationAnimation = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-36 flex items-center justify-center gap-8">
+    <div className="relative w-full h-28 flex items-center justify-center gap-6">
       {/* Business diagram */}
-      <div className="relative flex-shrink-0">
-        <div className="w-14 h-14 rounded-xl bg-[#0d1a1a] border border-gray-700/50 flex items-center justify-center">
-          <BarChart3 className="w-5 h-5 text-gray-500" />
-        </div>
-        <motion.div 
-          className="absolute inset-0 rounded-xl border-2 border-teal-500/40"
-          animate={{ scale: [1, 1.12, 1], opacity: [0.4, 0.8, 0.4] }}
-          transition={{ duration: 2.5, repeat: Infinity }}
-        />
+      <div className="w-12 h-12 rounded-lg bg-white/[0.03] border border-white/[0.06] flex items-center justify-center">
+        <BarChart3 className="w-5 h-5 text-white/25" />
       </div>
 
-      <ArrowRight className="w-4 h-4 text-teal-500/40 flex-shrink-0" />
+      <ArrowRight className="w-3.5 h-3.5 text-white/15 flex-shrink-0" />
 
       {/* Optimized system */}
-      <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-500/15 to-emerald-500/15 border border-teal-500/30 flex items-center justify-center flex-shrink-0">
-        <Zap className="w-5 h-5 text-teal-400" />
+      <div className="w-12 h-12 rounded-lg bg-teal-500/10 border border-teal-500/20 flex items-center justify-center">
+        <Zap className="w-5 h-5 text-teal-400/70" />
       </div>
 
-      <ArrowRight className="w-4 h-4 text-teal-500/40 flex-shrink-0" />
+      <ArrowRight className="w-3.5 h-3.5 text-white/15 flex-shrink-0" />
 
       {/* Metrics */}
-      <div className="flex flex-col gap-2.5">
-        <div className="px-4 py-2 rounded-md bg-teal-500/8 border border-teal-500/15">
-          <span className="text-xs text-teal-400 font-mono font-medium">Efficiency: {efficiency}%</span>
+      <div className="flex flex-col gap-2">
+        <div className="px-3 py-1.5 rounded-md bg-teal-500/6 border border-teal-500/12">
+          <span className="text-[11px] text-teal-400/70 font-mono">Efficiency: {efficiency}%</span>
         </div>
-        <div className="px-4 py-2 rounded-md bg-emerald-500/8 border border-emerald-500/15">
-          <span className="text-xs text-emerald-400 font-mono font-medium">Cost: -{cost}%</span>
+        <div className="px-3 py-1.5 rounded-md bg-teal-500/6 border border-teal-500/12">
+          <span className="text-[11px] text-teal-400/70 font-mono">Cost: -{cost}%</span>
         </div>
       </div>
     </div>
