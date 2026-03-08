@@ -92,22 +92,22 @@ const RealEstateAnimation = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-44 flex items-center justify-center">
+    <div className="relative w-full h-52 flex items-center justify-center">
       {/* Central property node */}
       <motion.div 
-        className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500/15 to-emerald-500/15 border border-teal-500/30 flex items-center justify-center z-10"
+        className="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-500/15 to-emerald-500/15 border border-teal-500/30 flex items-center justify-center z-10"
         animate={{ boxShadow: ['0 0 15px rgba(20, 184, 166, 0.15)', '0 0 25px rgba(20, 184, 166, 0.3)', '0 0 15px rgba(20, 184, 166, 0.15)'] }}
         transition={{ duration: 2.5, repeat: Infinity }}
       >
-        <span className="text-base">🏠</span>
+        <span className="text-lg">🏠</span>
       </motion.div>
 
       {/* Agent nodes in a circle */}
       {agents.map((agent, i) => {
         const angle = (i * 72 - 90) * (Math.PI / 180);
-        const radius = 65;
+        const radius = 85;
         const x = Math.cos(angle) * radius;
-        const y = Math.sin(angle) * (radius * 0.75);
+        const y = Math.sin(angle) * (radius * 0.8);
         const isActive = i === activeAgent;
 
         return (
@@ -124,10 +124,10 @@ const RealEstateAnimation = () => {
             
             <motion.div
               className="absolute flex flex-col items-center gap-1.5"
-              style={{ left: `calc(50% + ${x}px - 18px)`, top: `calc(50% + ${y}px - 18px)` }}
+              style={{ left: `calc(50% + ${x}px - 20px)`, top: `calc(50% + ${y}px - 20px)` }}
             >
               <motion.div 
-                className={`w-9 h-9 rounded-lg flex items-center justify-center transition-colors duration-300 ${
+                className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors duration-300 ${
                   isActive 
                     ? 'bg-gradient-to-br from-teal-500 to-emerald-500 shadow-md shadow-teal-500/25' 
                     : 'bg-[#0d1a1a] border border-gray-700/50'
@@ -135,9 +135,9 @@ const RealEstateAnimation = () => {
                 animate={isActive ? { scale: [1, 1.1, 1] } : { scale: 1 }}
                 transition={{ duration: 0.4 }}
               >
-                <agent.icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-gray-500'}`} />
+                <agent.icon className={`w-4.5 h-4.5 ${isActive ? 'text-white' : 'text-gray-500'}`} />
               </motion.div>
-              <span className={`text-[9px] font-medium ${isActive ? 'text-teal-400' : 'text-gray-600'}`}>{agent.label}</span>
+              <span className={`text-[10px] font-medium ${isActive ? 'text-teal-400' : 'text-gray-600'}`}>{agent.label}</span>
             </motion.div>
           </React.Fragment>
         );
