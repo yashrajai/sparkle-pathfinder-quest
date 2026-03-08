@@ -22,49 +22,42 @@ const LeadGenAnimation = () => {
   ];
 
   return (
-    <div className="relative w-full h-44 flex flex-col items-center justify-center px-3">
+    <div className="relative w-full h-32 flex flex-col items-center justify-center px-2">
       {/* Lead counter */}
       <motion.div 
-        className="absolute top-3 right-3 px-3 py-1.5 rounded-lg bg-teal-500/10 border border-teal-500/25"
+        className="absolute top-2 right-2 px-2.5 py-1 rounded-md bg-teal-500/8 border border-teal-500/20"
         key={leadCount}
-        initial={{ scale: 1.05, opacity: 0.8 }}
-        animate={{ scale: 1, opacity: 1 }}
+        initial={{ opacity: 0.7 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
       >
-        <span className="text-xs text-teal-400 font-mono font-medium">+{leadCount} leads</span>
+        <span className="text-[11px] text-teal-400/80 font-mono">+{leadCount} leads</span>
       </motion.div>
 
       {/* Flow path */}
-      <div className="relative w-full mt-4">
-        <svg className="absolute inset-x-0 top-[18px] w-full h-[4px]" preserveAspectRatio="none" viewBox="0 0 400 4">
-          <line x1="40" y1="2" x2="360" y2="2" stroke="rgba(20, 184, 166, 0.15)" strokeWidth="2" />
+      <div className="relative w-full mt-3">
+        <svg className="absolute inset-x-0 top-[14px] w-full h-[2px]" preserveAspectRatio="none" viewBox="0 0 400 2">
+          <line x1="40" y1="1" x2="360" y2="1" stroke="rgba(20, 184, 166, 0.12)" strokeWidth="1.5" />
           <motion.circle
-            r="4" fill="#14b8a6"
+            r="3" fill="rgba(20, 184, 166, 0.6)"
             animate={{ cx: [40, 360] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-          />
-          <motion.circle
-            r="3" fill="#10b981" opacity={0.7}
-            animate={{ cx: [40, 360] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "linear", delay: 1.5 }}
+            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
           />
         </svg>
 
         <div className="flex items-start justify-between w-full relative z-10">
           {nodes.map((node) => (
-            <div key={node.label} className="flex flex-col items-center gap-2 w-16">
-              <motion.div 
-                className={`w-9 h-9 rounded-lg flex items-center justify-center ${
+            <div key={node.label} className="flex flex-col items-center gap-1.5 w-14">
+              <div 
+                className={`w-7 h-7 rounded-md flex items-center justify-center ${
                   node.highlight 
-                    ? 'bg-gradient-to-br from-teal-500 to-emerald-500 shadow-md shadow-teal-500/20' 
-                    : 'bg-[#0d1a1a] border border-teal-500/20'
+                    ? 'bg-teal-500/20 border border-teal-500/40' 
+                    : 'bg-white/[0.03] border border-white/[0.06]'
                 }`}
-                animate={node.highlight ? { scale: [1, 1.06, 1] } : {}}
-                transition={{ duration: 2.5, repeat: Infinity }}
               >
-                <node.icon className={`w-4 h-4 ${node.highlight ? 'text-white' : 'text-teal-400/70'}`} />
-              </motion.div>
-              <span className="text-[10px] text-gray-500 font-medium text-center leading-tight">{node.label}</span>
+                <node.icon className={`w-3.5 h-3.5 ${node.highlight ? 'text-teal-400' : 'text-white/30'}`} />
+              </div>
+              <span className="text-[9px] text-white/40 font-medium text-center leading-tight">{node.label}</span>
             </div>
           ))}
         </div>
